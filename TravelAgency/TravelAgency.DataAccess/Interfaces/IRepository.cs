@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using TravelAgency.BusinessLogic.Models;
+﻿using TravelAgency.DataAccess.Models;
 
-namespace TravelAgency.BusinessLogic.Interfaces
+namespace TravelAgency.DataAccess.Interfaces
 {
     public interface IRepository<TEntity> :ICommandRepository<TEntity>,IQueryRepository<TEntity> where TEntity : BaseEntity
     {

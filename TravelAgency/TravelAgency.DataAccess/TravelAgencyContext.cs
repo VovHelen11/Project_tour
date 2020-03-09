@@ -5,7 +5,7 @@ namespace TravelAgency.DataAccess
 {
     public class TravelAgencyContext : DbContext
     {
-        public TravelAgencyContext()
+        public TravelAgencyContext(string connectionStringName):base(connectionStringName)
         {
             System.Data.Entity.Database.SetInitializer(new TravelAgencyContextInitializer());
 

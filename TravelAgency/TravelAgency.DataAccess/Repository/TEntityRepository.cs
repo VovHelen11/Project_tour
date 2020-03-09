@@ -2,8 +2,8 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Net.Sockets;
-using TravelAgency.BusinessLogic.Interfaces;
-using TravelAgency.BusinessLogic.Models;
+using TravelAgency.DataAccess.Interfaces;
+using TravelAgency.DataAccess.Models;
 
 namespace TravelAgency.DataAccess.Repository
 {
@@ -33,7 +33,7 @@ namespace TravelAgency.DataAccess.Repository
             throw new System.NotImplementedException();
         }
 
-        public IReadOnlyCollection<TEntity> GetAll(int? skip = null, int? take = null)
+        public IEnumerable<TEntity> GetAll(int? skip = null, int? take = null)
         {
            return _dbSet.ToList();
         }

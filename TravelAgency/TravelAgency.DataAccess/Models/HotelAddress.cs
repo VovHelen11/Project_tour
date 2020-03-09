@@ -1,6 +1,4 @@
-﻿using TravelAgency.BusinessLogic.Models;
-
-namespace TravelAgency.DataAccess.Models
+﻿namespace TravelAgency.DataAccess.Models
 {
     public class HotelAddress:BaseEntity
     {

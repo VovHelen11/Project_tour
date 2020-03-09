@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency", "TravelAgenc
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.BusinessLogic", "TravelAgency.BusinessLogic\TravelAgency.BusinessLogic.csproj", "{E62B57C0-8223-433C-B8EC-B32CACDDEBFC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{56EA9D82-4CB9-463A-8F20-AE42C222CE2E} = {56EA9D82-4CB9-463A-8F20-AE42C222CE2E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelAgency.DataAccess", "TravelAgency.DataAccess\TravelAgency.DataAccess.csproj", "{56EA9D82-4CB9-463A-8F20-AE42C222CE2E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E62B57C0-8223-433C-B8EC-B32CACDDEBFC} = {E62B57C0-8223-433C-B8EC-B32CACDDEBFC}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

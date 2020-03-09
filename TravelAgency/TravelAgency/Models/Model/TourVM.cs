@@ -1,9 +1,10 @@
 ﻿using System;
 
-namespace TravelAgency.DataAccess.Models
+namespace TravelAgency.Models.Model
 {
-    public class Tour:BaseEntity
+    public class TourVM
     {
+        public int Id { get; set; }
         public string Name { get; set; }
 
        public DateTime DepartureData { get; set; }
@@ -12,9 +13,9 @@ namespace TravelAgency.DataAccess.Models
 
         public int PeopleCount { get; set; }
 
-        public TourType TourType { get; set; }
+        public string TourType { get; set; }
 
-        public Hotel Hotel { get; set; }
+        public string HotelType { get; set; }
 
         public double Price { get; set; }
 

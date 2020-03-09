@@ -1,4 +1,4 @@
-﻿namespace TravelAgency.BusinessLogic.Models
+﻿namespace TravelAgency.DataAccess.Models
 {
    public class BaseEntity
     {
