@@ -60,9 +60,17 @@
     <Compile Include="Interfaces\IHotelService.cs" />
     <Compile Include="Infrastructure\BLAutofacConfig.cs" />
     <Compile Include="Infrastructure\GlobalProfile.cs" />
-    <Compile Include="Models\HotelTypeBL.cs" />
+    <Compile Include="Interfaces\ITourService.cs" />
+    <Compile Include="Interfaces\ITourTypeService.cs" />
+    <Compile Include="Models\DataCreatTourBL.cs" />
+    <Compile Include="Models\HotelBL.cs" />
+    <Compile Include="Models\HotelAddressBL.cs" />
+    <Compile Include="Models\TourBL.cs" />
+    <Compile Include="Models\TourTypeBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\HotelService.cs" />
+    <Compile Include="Service\TourTypeServise.cs" />
+    <Compile Include="Service\TourServise.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelAgency.DataAccess\TravelAgency.DataAccess.csproj">

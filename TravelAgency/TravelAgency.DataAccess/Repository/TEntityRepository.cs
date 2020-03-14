@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Sockets;
 using TravelAgency.DataAccess.Interfaces;
 using TravelAgency.DataAccess.Models;
 
 namespace TravelAgency.DataAccess.Repository
 {
-    public class TEntityRepository<TEntity>:IRepository<TEntity> where TEntity:BaseEntity
+    public class TEntityRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly TravelAgencyContext _context;
         private readonly DbSet<TEntity> _dbSet;
@@ -20,27 +22,37 @@ namespace TravelAgency.DataAccess.Repository
         }
         public void Add(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Update(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+           var  obj= _dbSet.FirstOrDefault(o => o.Id == id);
+            _dbSet.Remove(obj);
+            _context.SaveChanges();
         }
 
         public IEnumerable<TEntity> GetAll(int? skip = null, int? take = null)
         {
-           return _dbSet.ToList();
+            return _dbSet.ToList();
         }
 
         public TEntity GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return _dbSet.FirstOrDefault(o => o.Id == id);
+        }
+        
+
+        public IEnumerable<TEntity> GetMan(Expression<Func<TEntity, bool>> expression)
+        {
+            return _dbSet.Where(expression).ToList();
         }
     }
 }

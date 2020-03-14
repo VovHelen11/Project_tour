@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using TravelAgency.DataAccess.Models;
 
 namespace TravelAgency.DataAccess.Interfaces
@@ -8,6 +10,8 @@ namespace TravelAgency.DataAccess.Interfaces
         IEnumerable<TEntity> GetAll(int? skip = null, int? take = null);
 
         TEntity GetById(int id);
+
+        IEnumerable<TEntity> GetMan(Expression<Func<TEntity, bool>> expression);
 
     }
 }

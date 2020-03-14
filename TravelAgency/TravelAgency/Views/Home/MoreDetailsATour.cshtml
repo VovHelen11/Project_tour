@@ -1,0 +1,31 @@
+﻿@model  TravelAgency.Models.Model.TourVM
+@{
+    ViewBag.Title = "MoreDetailsATour";
+    
+
+}
+
+    <div class="card text-white bg-dark mb-3 ">
+        <p class="card-header">@Model.Name</p>
+        <div class="card-body">
+            <p class="card-subtitle mb-2 text-muted">Туда: @Model.DepartureData / Обратно:  @Model.ArrivalDate</p>
+            <div class="card-text">
+                <p>Цена: @Model.Price</p>
+                <p>Гостиница: @Model.Hotel.Name</p>
+                <p>Тип гостиницы: @Model.Hotel.HotelType</p> 
+                <p>Адрес гостиницы:</p>
+                <p>Город: @Model.Hotel.HotelAddress.City</p>
+                <p>Страна: @Model.Hotel.HotelAddress.Country</p>
+                <p>Улица: @Model.Hotel.HotelAddress.Street</p>
+                                
+                <p>Количество людей: @Model.PeopleCount</p>
+                <p>Тип тура: @Model.TourType</p>
+
+            </div>
+
+        </div>
+        <button name="button" id="more-details" type="submit">
+            @Html.ActionLink("Забронировать", "MoreDetailsATour", new { id = Model.Id })
+        </button>
+
+    </div>

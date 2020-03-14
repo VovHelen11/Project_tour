@@ -1,12 +1,12 @@
 ﻿
 namespace TravelAgency.DataAccess.Models
 {
-    public class Hotel:BaseEntity
+    public class Hotel : BaseEntity
     {
         public string Name { get; set; }
 
-        public HotelType HotelType { get; set; }
+        public virtual HotelType HotelType { get; set; }
 
-        public HotelAddress HotelAddress { get; set; }
+        public virtual HotelAddress HotelAddress { get; set; }
     }
 }

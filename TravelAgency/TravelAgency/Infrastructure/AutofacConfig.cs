@@ -18,8 +18,7 @@ namespace TravelAgency.Infrastructure
 
             var mapperConfig = new MapperConfiguration(cfg =>
                 {
-                    cfg.AddProfile<GlobalProfile>();
-
+                    cfg.AddProfiles(new Profile[] { new GlobalProfile(), new MapProfile() });
                 });
 
             builder.Register(c => new Mapper(mapperConfig)).AsSelf();

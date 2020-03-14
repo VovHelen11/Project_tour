@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace TravelAgency.Models.Model
+namespace TravelAgency.BusinessLogic.Models
 {
-    public class TourVM
+    public class TourBL
     {
         public int Id { get; set; }
 
@@ -14,9 +14,9 @@ namespace TravelAgency.Models.Model
 
         public int PeopleCount { get; set; }
 
-        public string TourType { get; set; }
+        public  string TourType { get; set; }
 
-        public HotelVM Hotel { get; set; }
+        public HotelBL Hotel { get; set; }
 
         public double Price { get; set; }
 

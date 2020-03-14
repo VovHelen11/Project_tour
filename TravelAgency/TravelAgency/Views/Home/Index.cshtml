@@ -9,17 +9,17 @@
     <div class="card text-white bg-dark mb-3 ">
         <p class="card-header">@item.Name</p>
         <div class="card-body">
-            <p class="card-subtitle mb-2 text-muted">@item.DepartureData : @item.ArrivalDate</p>
+            <p class="card-subtitle mb-2 text-muted">Туда: @item.DepartureData / Обратно: @item.ArrivalDate</p>
             <div class="card-text">
-                <p>@item.Price</p>
-                <p>@item.HotelType</p>
-                <p>@item.PeopleCount</p>
-                <p>@item.TourType</p>
+                <p>Цена: @item.Price</p>
+                <p>Гостиница: @item.Hotel.Name</p>
+                <p>Количество людей: @item.PeopleCount</p>
+                <p>Тип тура: @item.TourType</p>
             </div>
 
         </div> 
         <button name="button" id="more-details" type="submit">
-            @Html.ActionLink("Забронировать", "ReserveATour", new { id = item.Id })
+            @Html.ActionLink("Подробнее", "MoreDetailsATour", new { id = item.Id })
         </button>
     </div>
 

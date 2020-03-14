@@ -1,6 +1,6 @@
-﻿namespace TravelAgency.DataAccess.Models
+﻿namespace TravelAgency.Models.Model
 {
-    public class HotelAddress : BaseEntity
+    public class HotelAddressVM
     {
         public string Country { get; set; }
 

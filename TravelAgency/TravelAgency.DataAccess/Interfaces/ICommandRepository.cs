@@ -8,7 +8,7 @@ namespace TravelAgency.DataAccess.Interfaces
 
         void Update(TEntity entity);
 
-        void Delete(TEntity entity);
+        void Delete(int id);
 
     }
 }

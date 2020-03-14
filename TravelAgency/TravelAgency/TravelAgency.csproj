@@ -150,11 +150,17 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CreatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AutofacConfig.cs" />
+    <Compile Include="Infrastructure\MapProfile.cs" />
+    <Compile Include="Models\Model\DataCreatTourVM.cs" />
+    <Compile Include="Models\Model\HotelAddressVM.cs" />
+    <Compile Include="Models\Model\HotelVM.cs" />
     <Compile Include="Models\Model\TourVM.cs" />
     <Compile Include="Models\ToursVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,7 +182,9 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Shared\_LayoutMenuUser.cshtml" />
-    <Content Include="Views\Home\ReserveATour.cshtml" />
+    <Content Include="Views\Home\MoreDetailsATour.cshtml" />
+    <Content Include="Views\Search\SearchTour.cshtml" />
+    <Content Include="Views\Creat\CreatTour.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

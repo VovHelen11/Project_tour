@@ -8,6 +8,8 @@ namespace TravelAgency.BusinessLogic.Interfaces
 {
     public interface IHotelService
     {
-         IEnumerable<HotelTypeBL> SetHotelType();
+         IEnumerable<HotelBL> GetHotels();
+
+
     }
 }

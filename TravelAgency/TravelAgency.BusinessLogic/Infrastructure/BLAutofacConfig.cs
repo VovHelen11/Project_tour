@@ -10,6 +10,7 @@ using TravelAgency.DataAccess;
 using TravelAgency.DataAccess.Interfaces;
 using TravelAgency.DataAccess.Models;
 using TravelAgency.DataAccess.Repository;
+using TravelAgency.Models;
 
 namespace TravelAgency.BusinessLogic.Infrastructure
 {
@@ -22,6 +23,10 @@ namespace TravelAgency.BusinessLogic.Infrastructure
             builder.RegisterType<TravelAgencyContext>().AsSelf().WithParameter("connectionStringName", "TravelAgency");
 
             builder.RegisterType<HotelService>().As<IHotelService>();
+
+            builder.RegisterType<TourServise>().As<ITourService>();
+
+            builder.RegisterType<TourTypeServise>().As<ITourTypeService>();
         }
     }
 }

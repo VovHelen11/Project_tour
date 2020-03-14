@@ -5,6 +5,7 @@ namespace TravelAgency.Models
 {
     public class ToursVM
     {
-        public List<TourVM> Tours { get; set; }
-    
+        public IEnumerable<TourVM> Tours { get; set; }
+
+    }
 }

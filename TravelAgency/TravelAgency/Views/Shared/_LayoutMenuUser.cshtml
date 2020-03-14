@@ -3,13 +3,14 @@
 }
 <div class="col-9">
     <div class=" row ">
-        <a class="col-2 text-center card border-dark mb-3" href="#">Главная</a>
-        <a class="col-2 text-center card border-dark mb-3" href="#">Горящие туры</a>
-        <a class="col-2 text-center card border-dark mb-3" href="#">Поиск тура</a>
+       
+            <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Поиск тура", "SearchTour", "Search")</a></li>
+            <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Главная", "Index", "Home")</a></li>
+            <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Создание тура", "CreatTour", "Creat")</a></li>
+        
+       
     </div>
     <div>@RenderBody()</div>
 </div>
-
-
 
 

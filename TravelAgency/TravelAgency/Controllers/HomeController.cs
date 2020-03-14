@@ -3,28 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using TravelAgency.BusinessLogic.Interfaces;
+using TravelAgency.BusinessLogic.Models;
+using TravelAgency.Models;
+using TravelAgency.Models.Model;
 
 namespace TravelAgency.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IHotelService _hotelService;
-        public HomeController(IHotelService hotelService)
+        private readonly ITourService _tourService;
+        private readonly Mapper _mapper;
+        public HomeController(ITourService tourService, Mapper mapper)
         {
-            _hotelService = hotelService;
+            _tourService = tourService;
+            _mapper = mapper;
         }
-        // GET: Home
+        
         public ActionResult Index()
         {
-            _hotelService.SetHotelType();
+           var tours= _tourService.GetHotTours();
+           var maptours=_mapper.Map<IEnumerable<TourBL>, IEnumerable<TourVM>>(tours);
 
-            return View();
+            return View(new ToursVM {
+            Tours=maptours});
         }
 
-        public ActionResult ReserveATour()
+        public ActionResult MoreDetailsATour(int? id)
         {
-            return View();
+
+            if (!id.HasValue)
+            {
+                return View("Error");
+            }
+            else
+            {
+                var tour = _tourService.GetTour(id.Value);
+                var maptour = _mapper.Map<TourBL, TourVM>(tour);
+
+                return View(maptour);
+            }
         }
     }
 }

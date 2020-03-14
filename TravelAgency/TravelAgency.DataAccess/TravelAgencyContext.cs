@@ -7,6 +7,8 @@ namespace TravelAgency.DataAccess
     {
         public TravelAgencyContext(string connectionStringName):base(connectionStringName)
         {
+            this.Configuration.LazyLoadingEnabled = true;
+
             System.Data.Entity.Database.SetInitializer(new TravelAgencyContextInitializer());
 
         }

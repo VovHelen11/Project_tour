@@ -12,19 +12,19 @@ namespace TravelAgency.BusinessLogic.Service
     public class HotelService:IHotelService
     {
         
-      private readonly IRepository<HotelType> _repository;
+      private readonly IRepository<Hotel> _repository;
       private readonly Mapper _mapper;
 
-      public HotelService(IRepository<HotelType> repository, Mapper mapper)
+      public HotelService(IRepository<Hotel> repository, Mapper mapper)
       {
           _repository = repository;
           _mapper = mapper;
       }
 
-      public IEnumerable<HotelTypeBL> SetHotelType()
+      public IEnumerable<HotelBL> GetHotels()
       {
           var hotels = _repository.GetAll();
-          var mapHotels = _mapper.Map<IEnumerable<HotelType>, IEnumerable<HotelTypeBL>>(hotels);
+          var mapHotels = _mapper.Map<IEnumerable<Hotel>, IEnumerable<HotelBL>>(hotels);
 
           return mapHotels;
       }
