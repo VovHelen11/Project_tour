@@ -19,5 +19,7 @@ namespace TravelAgency.Models.Model
         public HotelVM Hotel { get; set; }
 
         public double Price { get; set; }
+
+        public bool Hot { get; set; }
     }
 }

@@ -161,12 +161,14 @@
     <Compile Include="Infrastructure\MapProfile.cs" />
     <Compile Include="Models\Model\CreateTourVM.cs" />
     <Compile Include="Models\Model\DataCreatTourVM.cs" />
+    <Compile Include="Models\Model\DataDeleteTourVM.cs" />
     <Compile Include="Models\Model\DataFilterVM.cs" />
     <Compile Include="Models\Model\DataSearchVM.cs" />
     <Compile Include="Models\Model\FilterVM.cs" />
     <Compile Include="Models\Model\HotelAddressVM.cs" />
     <Compile Include="Models\Model\HotelTypeVM.cs" />
     <Compile Include="Models\Model\HotelVM.cs" />
+    <Compile Include="Models\Model\ModificationTourVM.cs" />
     <Compile Include="Models\Model\TourTypeVM.cs" />
     <Compile Include="Models\Model\TourVM.cs" />
     <Compile Include="Models\ToursVM.cs" />
@@ -197,6 +199,7 @@
     <Content Include="Views\Administrator\UserUnlock.cshtml" />
     <Content Include="Views\Administrator\Administrator.cshtml" />
     <Content Include="Views\Administrator\DeleteTour.cshtml" />
+    <Content Include="Views\Administrator\ModificationTour.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

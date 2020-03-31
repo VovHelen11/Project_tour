@@ -36,9 +36,12 @@ namespace TravelAgency.DataAccess.Repository
 
         public void Delete(int id)
         {
-           var  obj= _dbSet.FirstOrDefault(o => o.Id == id);
-            _dbSet.Remove(obj);
-            _context.SaveChanges();
+            var obj = _dbSet.FirstOrDefault(o => o.Id == id);
+            if (obj != null)
+            {
+                _dbSet.Remove(obj);
+                _context.SaveChanges();
+            }
         }
 
         public IEnumerable<TEntity> GetAll(int? skip = null, int? take = null)
@@ -50,7 +53,7 @@ namespace TravelAgency.DataAccess.Repository
         {
             return _dbSet.FirstOrDefault(o => o.Id == id);
         }
-        
+
 
         public IEnumerable<TEntity> GetMan(Expression<Func<TEntity, bool>> expression)
         {

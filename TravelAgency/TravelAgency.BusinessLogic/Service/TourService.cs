@@ -102,6 +102,10 @@ namespace TravelAgency.BusinessLogic.Service
 
         }
 
-      
+        public void DeleteTour(int id)
+        {
+              _repository.Delete(id);
+            
+        }
     }
 }
