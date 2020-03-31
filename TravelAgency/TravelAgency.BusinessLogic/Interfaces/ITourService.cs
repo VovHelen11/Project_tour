@@ -23,5 +23,6 @@ namespace TravelAgency.BusinessLogic.Interfaces
         void DeleteTour(int id);
 
         void Update(CreateTourBL tour);
+        void BookTour(int tourId, int userId);
     }
 }

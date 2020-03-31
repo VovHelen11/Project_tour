@@ -154,9 +154,11 @@
     <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AuthModule.cs" />
     <Compile Include="Infrastructure\AutofacConfig.cs" />
     <Compile Include="Infrastructure\MapProfile.cs" />
     <Compile Include="Models\Model\CreateTourVM.cs" />
@@ -172,6 +174,10 @@
     <Compile Include="Models\Model\TourTypeVM.cs" />
     <Compile Include="Models\Model\TourVM.cs" />
     <Compile Include="Models\ToursVM.cs" />
+    <Compile Include="Models\UserModel\LoginData.cs" />
+    <Compile Include="Models\UserModel\RegistrationData.cs" />
+    <Compile Include="Models\UserModel\UsersVM.cs" />
+    <Compile Include="Models\UserModel\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -195,12 +201,13 @@
     <Content Include="Views\Search\SearchTours.cshtml" />
     <Content Include="Views\Create\CreateTour.cshtml" />
     <Content Include="Views\Search\Filter.cshtml" />
-    <Content Include="Views\Administrator\UserLock.cshtml" />
-    <Content Include="Views\Administrator\UserUnlock.cshtml" />
-    <Content Include="Views\Administrator\Administrator.cshtml" />
     <Content Include="Views\Administrator\DeleteTour.cshtml" />
     <Content Include="Views\Administrator\ModificationTour.cshtml" />
     <Content Include="Views\Administrator\UpdateTour.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Registration.cshtml" />
+    <Content Include="Views\User\Profile.cshtml" />
+    <Content Include="Views\Administrator\AllUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -212,9 +219,17 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TravelAgency.Authentication\TravelAgency.Authentication.csproj">
+      <Project>{AC9C7228-4238-4367-9591-60E1D213BBBD}</Project>
+      <Name>TravelAgency.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelAgency.BusinessLogic\TravelAgency.BusinessLogic.csproj">
       <Project>{E62B57C0-8223-433C-B8EC-B32CACDDEBFC}</Project>
       <Name>TravelAgency.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelAgency.DataAccess\TravelAgency.DataAccess.csproj">
+      <Project>{56EA9D82-4CB9-463A-8F20-AE42C222CE2E}</Project>
+      <Name>TravelAgency.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

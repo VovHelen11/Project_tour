@@ -26,5 +26,12 @@ namespace TravelAgency.DataAccess.Models
 
         [ForeignKey(nameof(TourType))]
         public int  TourTypeId { get; set; }
+
+        [ForeignKey(nameof(BookedBy))]
+        public int? BookedById { get; set; }
+
+        public User BookedBy { get; set; }
+
+        public TourState TourState { get; set; } = TourState.Active;
     }
 }

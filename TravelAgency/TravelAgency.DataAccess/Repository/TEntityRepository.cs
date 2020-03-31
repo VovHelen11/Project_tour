@@ -55,7 +55,7 @@ namespace TravelAgency.DataAccess.Repository
         }
 
 
-        public IEnumerable<TEntity> GetMan(Expression<Func<TEntity, bool>> expression)
+        public IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> expression)
         {
             return _dbSet.Where(expression).ToList();
         }

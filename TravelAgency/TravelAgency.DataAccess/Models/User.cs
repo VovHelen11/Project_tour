@@ -17,5 +17,9 @@ namespace TravelAgency.DataAccess.Models
 
         public string Password { get; set; }
 
+        public UserType UserType { get; set; }
+
+        public bool Block { get; set; }
+
     }
 }

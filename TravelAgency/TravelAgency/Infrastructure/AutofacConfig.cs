@@ -1,7 +1,9 @@
 ﻿using System.Web.Mvc;
+using System.Web.Mvc.Filters;
 using Autofac;
 using Autofac.Integration.Mvc;
 using AutoMapper;
+using TravelAgency.Authentication.Interfaces;
 using TravelAgency.BusinessLogic.Infrastructure;
 
 namespace TravelAgency.Infrastructure
@@ -20,6 +22,9 @@ namespace TravelAgency.Infrastructure
                 {
                     cfg.AddProfiles(new Profile[] { new GlobalProfile(), new MapProfile() });
                 });
+
+            builder.RegisterType<Authentication.Authentication>().As<IAuthentication>().InstancePerRequest();
+
 
             builder.Register(c => new Mapper(mapperConfig)).AsSelf();
 

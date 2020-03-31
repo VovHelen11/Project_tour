@@ -22,5 +22,7 @@ namespace TravelAgency.BusinessLogic.Models
 
         public bool Hot { get; set; }
 
+        
+
     }
 }

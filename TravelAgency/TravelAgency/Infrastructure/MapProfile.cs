@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using TravelAgency.BusinessLogic.Models;
+using TravelAgency.DataAccess.Models;
 using TravelAgency.Models;
 using TravelAgency.Models.Model;
+using TravelAgency.Models.UserModel;
 
 namespace TravelAgency.Infrastructure
 {
@@ -9,6 +11,13 @@ namespace TravelAgency.Infrastructure
     {
         public MapProfile()
         {
+          CreateMap<UserBL, UserVM>()
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(srt => srt.LastName))
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(srt => srt.FirstName))
+                .ForMember(dest => dest.Login, opt => opt.MapFrom(srt => srt.Login))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(srt => srt.Id))
+                .ForMember(dest => dest.Block, opt => opt.MapFrom(srt => srt.Block));
+
             CreateMap<DataFilterVM, DataFilterBL>()
                 .ForMember(dest => dest.TourTypeId, opt => opt.MapFrom(srt => srt.TourTypeId))
                 .ForMember(dest => dest.HotelTypeId, opt => opt.MapFrom(srt => srt.HotelTypeId))

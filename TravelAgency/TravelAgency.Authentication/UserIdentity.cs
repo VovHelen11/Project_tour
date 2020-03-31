@@ -9,6 +9,7 @@ namespace TravelAgency.Authentication
     {
         public User User { get; set; }
 
+        public int? Id => User?.Id;
         public string Name => User == null ? "N/A" : $"{User.FirstName} {User.LastName}";
 
         public string AuthenticationType => "Custom";
@@ -32,7 +33,7 @@ namespace TravelAgency.Authentication
         {
             if (string.IsNullOrEmpty(login))
                 return;
-            User = userRepository.GetMan(u => u.Login == login).First();
+            User = userRepository.GetMany(u => u.Login == login).First();
         }
     }
 }

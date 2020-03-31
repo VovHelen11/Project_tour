@@ -6,24 +6,26 @@ using System.Web.Mvc;
 using AutoMapper;
 using TravelAgency.BusinessLogic.Interfaces;
 using TravelAgency.BusinessLogic.Models;
+using TravelAgency.DataAccess.Models;
 using TravelAgency.Models.Model;
+using TravelAgency.Models.UserModel;
 
 namespace TravelAgency.Controllers
 {
+    [Authorize(Roles = nameof(UserType.Admin))]
     public class AdministratorController : Controller
     {
         private readonly ITourService _tourService;
+        private readonly IUserService _userService;
         private readonly Mapper _mapper;
-        public AdministratorController(ITourService tourService, Mapper mapper)
+        public AdministratorController(ITourService tourService, Mapper mapper, IUserService userService)
         {
             _tourService = tourService;
             _mapper = mapper;
+            _userService = userService;
         }
 
-        public ActionResult Administrator()
-        {
-            return View();
-        }
+      
 
         public ActionResult DeleteTour()
         {
@@ -90,6 +92,28 @@ namespace TravelAgency.Controllers
             _tourService.Update(tour);
 
             return RedirectToAction("MoreDetailsATour", "Home", tour);
+        }
+
+        public ActionResult AllUser()
+        {
+            var users=_mapper.Map<IEnumerable<UserBL>,IEnumerable<UserVM>>(_userService.GetUsers());
+
+            return View(new UsersVM(){Users = users});
+        }
+
+        [HttpGet]
+        public ActionResult Block(int id)
+        {
+            _userService.Block(id);
+            return RedirectToAction("AllUser");
+        }
+
+        [HttpGet]
+        public ActionResult Unblock(int id)
+        {
+            _userService.Unblock(id);
+
+            return RedirectToAction("AllUser");
         }
     }
 }

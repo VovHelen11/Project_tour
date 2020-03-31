@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using TravelAgency.BusinessLogic.Interfaces;
 using TravelAgency.BusinessLogic.Models;
@@ -11,24 +12,27 @@ namespace TravelAgency.BusinessLogic.Service
 {
     public class TourService : ITourService
     {
-        private readonly IRepository<Tour> _repository;
+        private readonly IRepository<Tour> _tourRepository;
         private readonly IRepository<Hotel> _hotelRepository;
         private readonly IRepository<HotelType> _hotelTypeRepository;
         private readonly IRepository<TourType> _tourTypeRepository;
+        private readonly IRepository<User> _userRepository;
+
         private readonly Mapper _mapper;
 
-        public TourService(IRepository<Tour> repository, Mapper mapper, IRepository<Hotel> hotelRepository, IRepository<TourType> tourTypeRepository, IRepository<HotelType> hotelTypeRepository)
+        public TourService(IRepository<Tour> tourRepository, Mapper mapper, IRepository<Hotel> hotelRepository, IRepository<TourType> tourTypeRepository, IRepository<HotelType> hotelTypeRepository, IRepository<User> userRepository)
         {
-            _repository = repository;
+            _tourRepository = tourRepository;
             _mapper = mapper;
             _hotelRepository = hotelRepository;
             _tourTypeRepository = tourTypeRepository;
             _hotelTypeRepository = hotelTypeRepository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<TourBL> GetTours()
         {
-            var tours = _repository.GetAll();
+            var tours = _tourRepository.GetAll();
             var mapTours = _mapper.Map<IEnumerable<Tour>, IEnumerable<TourBL>>(tours);
 
             return mapTours;
@@ -40,13 +44,13 @@ namespace TravelAgency.BusinessLogic.Service
             mapTour.TourTypeId = tourBL.TourTypeId;
             mapTour.HotelId = tourBL.HotelId;
 
-            return _mapper.Map<Tour, TourBL>(_repository.Add(mapTour));
+            return _mapper.Map<Tour, TourBL>(_tourRepository.Add(mapTour));
 
         }
 
         public TourBL GetTour(int id)
         {
-            var tour = _repository.GetById(id);
+            var tour = _tourRepository.GetById(id);
             var mapTour = _mapper.Map<Tour, TourBL>(tour);
 
             return mapTour;
@@ -54,7 +58,7 @@ namespace TravelAgency.BusinessLogic.Service
 
         public IEnumerable<TourBL> GetHotTours()
         {
-            var tours = _repository.GetMan(o => o.Hot);
+            var tours = _tourRepository.GetMany(o => o.Hot);
             var mapHotTours = _mapper.Map<IEnumerable<Tour>, IEnumerable<TourBL>>(tours);
             return mapHotTours;
 
@@ -74,7 +78,7 @@ namespace TravelAgency.BusinessLogic.Service
 
         public IEnumerable<TourBL> GetSearchTour(DataFilterBL searchBl)
         {
-            var tours = _repository.GetMan(o => (o.Price <= searchBl.Price) && (o.PeopleCount == searchBl.PeopleCount) && (o.TourTypeId == searchBl.TourTypeId) && (o.HotelId == searchBl.HotelTypeId));
+            var tours = _tourRepository.GetMany(o => (o.Price <= searchBl.Price) && (o.PeopleCount == searchBl.PeopleCount) && (o.TourTypeId == searchBl.TourTypeId) && (o.HotelId == searchBl.HotelTypeId));
             var mapHotTours = _mapper.Map<IEnumerable<Tour>, IEnumerable<TourBL>>(tours);
             return mapHotTours;
         }
@@ -83,10 +87,10 @@ namespace TravelAgency.BusinessLogic.Service
         {
             var tourtypes = _mapper.Map<IEnumerable<TourType>, IEnumerable<TourTypeBL>>(_tourTypeRepository.GetAll());
             var hotelType = _mapper.Map<IEnumerable<HotelType>, IEnumerable<HotelTypeBL>>(_hotelTypeRepository.GetAll());
-            var peopleCount = _repository.GetAll().Select(x => x.PeopleCount).ToList();
+            var peopleCount = _tourRepository.GetAll().Select(x => x.PeopleCount).ToList();
             var minCountPeople = peopleCount.Min();
             var maxCountPeople = peopleCount.Max();
-            var priceList = _repository.GetAll().Select(x => x.Price).ToList();
+            var priceList = _tourRepository.GetAll().Select(x => x.Price).ToList();
             var minPrice = priceList.Min();
             var maxPrice = priceList.Max();
             return new DataSearchBL()
@@ -104,14 +108,13 @@ namespace TravelAgency.BusinessLogic.Service
 
         public void DeleteTour(int id)
         {
-            _repository.Delete(id);
+            _tourRepository.Delete(id);
 
         }
 
         public void Update(CreateTourBL tour)
         {
-            var tourDB = _repository.GetById(tour.Id);
-            //   var mapTour = _mapper.Map<CreateTourBL, Tour>(tour);
+            var tourDB = _tourRepository.GetById(tour.Id);
             tourDB.Hot = tour.Hot;
             tourDB.ArrivalDate = tour.ArrivalDate;
             tourDB.DepartureData = tour.DepartureData;
@@ -121,7 +124,29 @@ namespace TravelAgency.BusinessLogic.Service
             tourDB.TourTypeId = tour.TourTypeId;
             tourDB.HotelId = tour.HotelId;
 
-            _repository.Update(tourDB);
+            _tourRepository.Update(tourDB);
+        }
+
+        public void BookTour(int tourId, int userId)
+        {
+            var tour = _tourRepository.GetById(tourId);
+            if (tour == null)
+            {
+                throw new ArgumentException("Tour not found");
+            }
+            var user = _userRepository.GetById(userId);
+            if (user == null)
+            {
+                throw new ArgumentException("User not found");
+            }
+            if (tour.BookedById != null)
+            {
+                throw new ArgumentException("Tour has been booked");
+            }
+
+            tour.BookedBy = user;
+            tour.TourState = TourState.Registered;
+            _tourRepository.Update(tour);
         }
     }
 }

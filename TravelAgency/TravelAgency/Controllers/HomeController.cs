@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using TravelAgency.Authentication;
 using TravelAgency.BusinessLogic.Interfaces;
 using TravelAgency.BusinessLogic.Models;
+using TravelAgency.DataAccess.Models;
 using TravelAgency.Models;
 using TravelAgency.Models.Model;
 
@@ -44,6 +46,13 @@ namespace TravelAgency.Controllers
 
                 return View(maptour);
             }
+        }
+        [Authorize]
+        public ActionResult Book(int idTour)
+        {
+            _tourService.BookTour(idTour, ((UserIdentity)User.Identity).Id.Value);
+            return 
+
         }
     }
 }

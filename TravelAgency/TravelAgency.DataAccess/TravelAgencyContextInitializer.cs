@@ -9,6 +9,17 @@ namespace TravelAgency.DataAccess
     {
         protected override void Seed(TravelAgencyContext context)
         {
+            var user = new User()
+            {
+                FirstName = "lena",
+                LastName = "kha",
+                Login = "lenakha",
+                Password = "123",
+                MobilePhone = "+3805050505",
+                UserType = UserType.Admin
+            };
+
+            context.Users.Add(user);
 
             var hotelAddress = new HotelAddress
             {
@@ -31,8 +42,6 @@ namespace TravelAgency.DataAccess
             hotelType = context.HotelTypes.Add(hotelType);
             hotelType2 = context.HotelTypes.Add(hotelType2);
 
-            //context.HotelTypes.Add(hotelType);
-            //context.HotelTypes.Add(hotelType2);
 
             var hotel = new Hotel
             {
@@ -117,103 +126,7 @@ namespace TravelAgency.DataAccess
 
 
 
-            //    var hotelType = new HotelType
-            //    {
-            //        Name = "njgjgjff"
-            //    };
-
-            //    context.HotelTypes.Add(hotelType);
-
-            //    var hotelAddres =  new HotelAddress
-            //         {
-            //        City = "Kharkiv",
-            //        Country = "uk",
-            //        Street = "street"
-
-            //    };
-            //    context.HotelAddresses.Add(hotelAddres);
-
-            //    var hotel = new Hotel {
-
-            //        Name = "hotelname",
-            //        HotelAddress = hotelAddres,
-            //        HotelType = hotelType };
-
-
-            //    context.Hotels.Add(hotel);
-
-            //    context.SaveChanges();
-
-
-
-
-            //    //},new Hotel{
-
-            //    //    Name = "hotelname2",
-            //    //    HotelAddress = context.HotelAddresses.FindAsync().Result,
-            //    //    HotelType = context.HotelTypes.FindAsync().Result
-
-            //    //},new Hotel{
-
-            //    //    Name = "hotelname3",
-            //    //    HotelAddress = context.HotelAddresses.FindAsync().Result,
-            //    //    HotelType = context.HotelTypes.FindAsync().Result
-
-            //    //}
-
-
-
-            //    var tours = new List<Tour>
-            //    {
-            //        new Tour
-            //        {
-            //            Name = "1",
-            //            TourType = new TourType
-            //            {
-            //                Name = "tourtype"
-            //            },
-            //            ArrivalDate =new DateTime(2020,7,11),
-            //            DepartureData = new DateTime(2020,7,2),
-            //            PeopleCount = 2,
-            //            Price = 5000,
-            //            Hotel = hotel
-
-
-            //        }
-            //        //,
-            //        //new Tour
-            //        //{
-            //        //    Name = "222",
-            //        //    TourType = new TourType
-            //        //    {
-            //        //        Name = "tourtype"
-            //        //    },
-            //        //    ArrivalDate =new DateTime(2020,7,11),
-            //        //    DepartureData = new DateTime(2020,7,2),
-            //        //    PeopleCount = 2,
-            //        //    Price = 5000,
-            //        //    Hotel = context.Hotels.FindAsync().Result
-
-            //        //},
-            //        //new Tour
-            //        //{
-            //        //    Name = "3333",
-            //        //    TourType = new TourType
-            //        //    {
-            //        //        Name = "tourtype"
-            //        //    },
-            //        //    ArrivalDate =new DateTime(2020,7,11),
-            //        //    DepartureData = new DateTime(2020,7,2),
-            //        //    PeopleCount = 2,
-            //        //    Price = 5000,
-            //        //    Hotel = context.Hotels.FindAsync().Result
-
-
-            //        //}
-
-            //    };
-            //    tours.ForEach(str => context.Tours.Add(str));
-            //    context.SaveChanges();
+           
         }
     }
 }

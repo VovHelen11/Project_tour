@@ -33,7 +33,7 @@ namespace TravelAgency.Authentication
             // return roles.Any(r =>
             //     string.Compare(r, nameof(UserIdentity.User.UserType), StringComparison.OrdinalIgnoreCase) == 0);
             //return roles.Any(r => enums.Any(e => e.ToString() == r));
-            return roles.Any(r => r == UserIdentity.User.UserType.ToString());
+            return roles.Contains(UserIdentity.User.UserType.ToString());
         }
     }
 }

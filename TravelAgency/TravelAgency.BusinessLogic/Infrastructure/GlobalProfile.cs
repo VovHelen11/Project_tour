@@ -10,7 +10,13 @@ namespace TravelAgency.BusinessLogic.Infrastructure
         public GlobalProfile()
         {
 
-          
+          CreateMap<User,UserBL>()
+              .ForMember(dest => dest.LastName, opt => opt.MapFrom(srt => srt.LastName))
+              .ForMember(dest => dest.FirstName, opt => opt.MapFrom(srt => srt.FirstName))
+              .ForMember(dest => dest.Login, opt => opt.MapFrom(srt => srt.Login))
+              .ForMember(dest => dest.Id, opt => opt.MapFrom(srt => srt.Id))
+              .ForMember(dest => dest.Block, opt => opt.MapFrom(srt => srt.Block));
+
 
             CreateMap<HotelType, HotelTypeBL>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(srt => srt.Name))

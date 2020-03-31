@@ -11,7 +11,7 @@ namespace TravelAgency.DataAccess.Interfaces
 
         TEntity GetById(int id);
 
-        IEnumerable<TEntity> GetMan(Expression<Func<TEntity, bool>> expression);
+        IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> expression);
 
     }
 }
