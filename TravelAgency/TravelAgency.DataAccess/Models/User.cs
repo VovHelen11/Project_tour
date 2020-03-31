@@ -13,5 +13,9 @@ namespace TravelAgency.DataAccess.Models
 
         public virtual ICollection<Tour> Tours { get; set; }
 
+        public string Login { get; set; }
+
+        public string Password { get; set; }
+
     }
 }

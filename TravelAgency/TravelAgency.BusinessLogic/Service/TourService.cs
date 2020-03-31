@@ -30,7 +30,7 @@ namespace TravelAgency.BusinessLogic.Service
         {
             var tours = _repository.GetAll();
             var mapTours = _mapper.Map<IEnumerable<Tour>, IEnumerable<TourBL>>(tours);
-            
+
             return mapTours;
         }
 
@@ -40,7 +40,7 @@ namespace TravelAgency.BusinessLogic.Service
             mapTour.TourTypeId = tourBL.TourTypeId;
             mapTour.HotelId = tourBL.HotelId;
 
-            return _mapper.Map<Tour,TourBL>(_repository.Add(mapTour));
+            return _mapper.Map<Tour, TourBL>(_repository.Add(mapTour));
 
         }
 
@@ -51,10 +51,10 @@ namespace TravelAgency.BusinessLogic.Service
 
             return mapTour;
         }
-        
+
         public IEnumerable<TourBL> GetHotTours()
         {
-            var tours = _repository.GetMan(o=>o.Hot);
+            var tours = _repository.GetMan(o => o.Hot);
             var mapHotTours = _mapper.Map<IEnumerable<Tour>, IEnumerable<TourBL>>(tours);
             return mapHotTours;
 
@@ -62,7 +62,7 @@ namespace TravelAgency.BusinessLogic.Service
 
         public DataCreateTourBL GetDateCreateTour()
         {
-            var tourtypes = _mapper.Map<IEnumerable<TourType>, IEnumerable <TourTypeBL>>( _tourTypeRepository.GetAll());
+            var tourtypes = _mapper.Map<IEnumerable<TourType>, IEnumerable<TourTypeBL>>(_tourTypeRepository.GetAll());
             var hotels = _mapper.Map<IEnumerable<Hotel>, IEnumerable<HotelBL>>(_hotelRepository.GetAll());
             return new DataCreateTourBL()
             {
@@ -74,7 +74,7 @@ namespace TravelAgency.BusinessLogic.Service
 
         public IEnumerable<TourBL> GetSearchTour(DataFilterBL searchBl)
         {
-            var tours = _repository.GetMan(o => (o.Price<=searchBl.Price)&& (o.PeopleCount == searchBl.PeopleCount) && (o.TourTypeId == searchBl.TourTypeId) && (o.HotelId == searchBl.HotelTypeId));
+            var tours = _repository.GetMan(o => (o.Price <= searchBl.Price) && (o.PeopleCount == searchBl.PeopleCount) && (o.TourTypeId == searchBl.TourTypeId) && (o.HotelId == searchBl.HotelTypeId));
             var mapHotTours = _mapper.Map<IEnumerable<Tour>, IEnumerable<TourBL>>(tours);
             return mapHotTours;
         }
@@ -104,8 +104,24 @@ namespace TravelAgency.BusinessLogic.Service
 
         public void DeleteTour(int id)
         {
-              _repository.Delete(id);
-            
+            _repository.Delete(id);
+
+        }
+
+        public void Update(CreateTourBL tour)
+        {
+            var tourDB = _repository.GetById(tour.Id);
+            //   var mapTour = _mapper.Map<CreateTourBL, Tour>(tour);
+            tourDB.Hot = tour.Hot;
+            tourDB.ArrivalDate = tour.ArrivalDate;
+            tourDB.DepartureData = tour.DepartureData;
+            tourDB.Name = tour.Name;
+            tourDB.PeopleCount = tour.PeopleCount;
+            tourDB.Price = tour.Price;
+            tourDB.TourTypeId = tour.TourTypeId;
+            tourDB.HotelId = tour.HotelId;
+
+            _repository.Update(tourDB);
         }
     }
 }

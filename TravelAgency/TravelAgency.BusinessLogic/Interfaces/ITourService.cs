@@ -21,5 +21,7 @@ namespace TravelAgency.BusinessLogic.Interfaces
         IEnumerable<TourBL> GetSearchTour(DataFilterBL searchBl);
 
         void DeleteTour(int id);
+
+        void Update(CreateTourBL tour);
     }
 }

@@ -22,6 +22,8 @@ namespace TravelAgency.BusinessLogic.Infrastructure
                 .ForMember(dest => dest.ArrivalDate, opt => opt.MapFrom(src => src.ArrivalDate))
                 .ForMember(dest => dest.DepartureData, opt => opt.MapFrom(src => src.DepartureData))
                 .ForMember(dest => dest.PeopleCount, opt => opt.MapFrom(src => src.PeopleCount))
+                .ForMember(dest => dest.Hot, opt => opt.MapFrom(src => src.Hot))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price));
 
             CreateMap<TourType, TourTypeBL>()
@@ -48,7 +50,8 @@ namespace TravelAgency.BusinessLogic.Infrastructure
                 .ForMember(dest => dest.PeopleCount, opt => opt.MapFrom(src => src.PeopleCount))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                 .ForMember(dest => dest.TourType, opt => opt.MapFrom(src => src.TourType.Name))
-                .ForMember(dest => dest.Hotel, opt => opt.MapFrom(src => src.Hotel));
+                .ForMember(dest => dest.Hotel, opt => opt.MapFrom(src => src.Hotel))
+                .ForMember(dest => dest.Hot, opt => opt.MapFrom(src => src.Hot));
            
             CreateMap<TourTypeBL, TourType>()
                    .ForMember(dest => dest.Name, opt => opt.MapFrom(srt => srt.Name));
@@ -72,6 +75,7 @@ namespace TravelAgency.BusinessLogic.Infrastructure
                 .ForMember(dest => dest.PeopleCount, opt => opt.MapFrom(src => src.PeopleCount))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                 .ForPath(dest => dest.TourType.Name, opt => opt.MapFrom(src => src.TourType))
+                .ForPath(dest => dest.Hot, opt => opt.MapFrom(src => src.Hot))
                 .ForMember(dest => dest.Hotel, opt => opt.MapFrom(src => src.Hotel));
         }
     }

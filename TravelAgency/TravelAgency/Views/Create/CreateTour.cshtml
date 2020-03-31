@@ -3,7 +3,7 @@
     ViewBag.Title = "CreatTour";
 }
 
-@using (Html.BeginForm("CreatTour", "Creat", FormMethod.Post))
+@using (Html.BeginForm("CreateTour", "Create", FormMethod.Post))
 {
     <div class="card form text-white bg-dark mb-3 ">
         @Html.LabelFor(x => x.Tour.Name)
@@ -12,11 +12,11 @@
 
         @Html.LabelFor(x => x.Tour.ArrivalDate)
         @Html.ValidationMessageFor(x => x.Tour.ArrivalDate)
-        @Html.TextBoxFor(x => x.Tour.ArrivalDate, new { placeholder = "Дата отп", type="date", name="calendar"})
+        @Html.TextBoxFor(x => x.Tour.ArrivalDate, new { placeholder = "Дата отп", type = "date", name = "calendar" })
 
         @Html.LabelFor(x => x.Tour.DepartureData)
         @Html.ValidationMessageFor(x => x.Tour.DepartureData)
-        @Html.TextBoxFor(x => x.Tour.DepartureData, new { placeholder = "Дата отп",type="date", name="calendar" })
+        @Html.TextBoxFor(x => x.Tour.DepartureData, new { placeholder = "Дата отп", type = "date", name = "calendar" })
 
         @Html.LabelFor(x => x.Tour.PeopleCount)
         @Html.ValidationMessageFor(x => x.Tour.PeopleCount)
@@ -26,6 +26,10 @@
         @Html.ValidationMessageFor(x => x.Tour.Price)
         @Html.TextBoxFor(x => x.Tour.Price, new { placeholder = "Дата отп" })
 
+        <div class="form-check">
+            <input class="form-check-input" id="Tour.Hot" name="Tour.Hot" value="true" type="checkbox" checked />
+            <label class="form-check-label" for="Tour.Hot">Hot</label><br />
+        </div>
 
         @Html.DropDownListFor(m => m.Tour.TourTypeId, Model.TourTypeSelect)
 

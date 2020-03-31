@@ -11,16 +11,16 @@ using TravelAgency.Models.Model;
 
 namespace TravelAgency.Controllers
 {
-    public class CreatController : Controller
+    public class CreateController : Controller
     {
         private readonly ITourService _tourService;
         private readonly Mapper _mapper;
-        public CreatController(ITourService tourService, Mapper mapper)
+        public CreateController(ITourService tourService, Mapper mapper)
         {
             _tourService = tourService;
             _mapper = mapper;
         }
-        public ActionResult CreatTour()
+        public ActionResult CreateTour()
         {
             var dataCreateTour = _tourService.GetDateCreateTour();
             var mapData = _mapper.Map<DataCreateTourBL, DataCreatTourVM>(dataCreateTour);
@@ -29,11 +29,11 @@ namespace TravelAgency.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreatTour(DataCreatTourVM creatTourVm) {
+        public ActionResult CreateTour(DataCreatTourVM createTourVm) {
 
             if (ModelState.IsValid)
             {
-               var tour= _tourService.AddTour(_mapper.Map<CreateTourVM,CreateTourBL>(creatTourVm.Tour));
+               var tour= _tourService.AddTour(_mapper.Map<CreateTourVM,CreateTourBL>(createTourVm.Tour));
 
                 return RedirectToAction("MoreDetailsATour","Home", tour);
             }

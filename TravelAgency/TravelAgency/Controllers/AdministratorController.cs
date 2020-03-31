@@ -30,13 +30,13 @@ namespace TravelAgency.Controllers
             var countTour = _tourService.GetTours().Count();
 
             return View(new DataDeleteTourVM
-                { CountTour = countTour });
+            { CountTour = countTour });
         }
 
         [HttpPost]
         public ActionResult DeleteTour(DataDeleteTourVM deleteTourVm)
         {
-           
+
             if (ModelState.IsValid)
             {
                 _tourService.DeleteTour(deleteTourVm.Id);
@@ -48,7 +48,48 @@ namespace TravelAgency.Controllers
 
         public ActionResult ModificationTour()
         {
-            return View();
+            var countTour = _tourService.GetTours().Count();
+
+            return View(new ModificationTourVM()
+            { CountTour = countTour });
+        }
+
+        [HttpPost]
+        public ActionResult ModificationTour(ModificationTourVM modificationTourVm)
+        {
+
+            if (modificationTourVm.Id > 0)
+            {
+                var tour = _mapper.Map<TourBL, TourVM>(_tourService.GetTour(modificationTourVm.Id));
+
+                if (tour != null)
+                {
+                    var dataCreateTour = _tourService.GetDateCreateTour();
+                    var mapData = _mapper.Map<DataCreateTourBL, DataCreatTourVM>(dataCreateTour);
+                    return View("UpdateTour", new ModificationTourVM()
+                    {
+                        TourVm = tour,
+                        DataCreated = mapData,
+                        Id = modificationTourVm.Id
+                    });
+                }
+
+            }
+
+            var countTour = _tourService.GetTours().Count();
+
+            return View(new ModificationTourVM()
+            { CountTour = countTour });
+        }
+        
+        [HttpPost]
+        public ActionResult UpdateTour(ModificationTourVM modificationTourVm)
+        {
+            var tour = _mapper.Map<CreateTourVM, CreateTourBL>(modificationTourVm.DataCreated.Tour);
+            tour.Id = modificationTourVm.Id;
+            _tourService.Update(tour);
+
+            return RedirectToAction("MoreDetailsATour", "Home", tour);
         }
     }
 }

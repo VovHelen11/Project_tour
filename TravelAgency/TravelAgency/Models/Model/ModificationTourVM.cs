@@ -2,7 +2,9 @@
 {
     public class ModificationTourVM
     {
-        public DataCreatTourVM DataCreatedTourVm { get; set; }
+        public DataCreatTourVM DataCreated { get; set; }
+
+        public TourVM TourVm { get; set; }
 
         public int Id { get; set; }
 

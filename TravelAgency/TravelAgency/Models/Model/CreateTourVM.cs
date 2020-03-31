@@ -4,7 +4,7 @@ namespace TravelAgency.Models.Model
 {
     public class CreateTourVM
     {
-      
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public DateTime DepartureData { get; set; }

@@ -24,10 +24,10 @@ namespace TravelAgency.Controllers
         public ActionResult Index()
         {
            var tours= _tourService.GetHotTours();
-           var maptours=_mapper.Map<IEnumerable<TourBL>, IEnumerable<TourVM>>(tours);
+           var mapTours=_mapper.Map<IEnumerable<TourBL>, IEnumerable<TourVM>>(tours);
 
             return View(new ToursVM {
-            Tours=maptours});
+            Tours=mapTours});
         }
 
         public ActionResult MoreDetailsATour(int? id)

@@ -151,7 +151,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
-    <Compile Include="Controllers\CreatController.cs" />
+    <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,13 +193,14 @@
     <Content Include="Views\Shared\_LayoutMenuUser.cshtml" />
     <Content Include="Views\Home\MoreDetailsATour.cshtml" />
     <Content Include="Views\Search\SearchTours.cshtml" />
-    <Content Include="Views\Creat\CreatTour.cshtml" />
+    <Content Include="Views\Create\CreateTour.cshtml" />
     <Content Include="Views\Search\Filter.cshtml" />
     <Content Include="Views\Administrator\UserLock.cshtml" />
     <Content Include="Views\Administrator\UserUnlock.cshtml" />
     <Content Include="Views\Administrator\Administrator.cshtml" />
     <Content Include="Views\Administrator\DeleteTour.cshtml" />
     <Content Include="Views\Administrator\ModificationTour.cshtml" />
+    <Content Include="Views\Administrator\UpdateTour.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

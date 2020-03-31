@@ -4,6 +4,7 @@ namespace TravelAgency.BusinessLogic.Models
 {
     public class CreateTourBL
     {
+        public int Id { get; set; }
       
         public string Name { get; set; }
 
@@ -18,5 +19,7 @@ namespace TravelAgency.BusinessLogic.Models
         public int HotelId { get; set; }
 
         public double Price { get; set; }
+
+        public bool Hot { get; set; }
     }
 }
