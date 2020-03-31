@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAgency.Models;
 
 namespace TravelAgency.BusinessLogic.Models
 {
-   public class DataCreatTourBL
+   public class DataCreateTourBL
     {
-        public TourBL Tour { get; set; }
-
         public IEnumerable<HotelBL> Hotels { get; set; }
 
-        public IEnumerable<string> TourTypes { get; set; }
+        public IEnumerable<TourTypeBL> TourTypes { get; set; }
     }
 }

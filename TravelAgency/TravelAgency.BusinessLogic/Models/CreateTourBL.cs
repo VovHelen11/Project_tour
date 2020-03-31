@@ -1,11 +1,10 @@
 ﻿using System;
 
-namespace TravelAgency.Models.Model
+namespace TravelAgency.BusinessLogic.Models
 {
-    public class TourVM
+    public class CreateTourBL
     {
-        public int Id { get; set; }
-
+      
         public string Name { get; set; }
 
         public DateTime DepartureData { get; set; }
@@ -14,9 +13,9 @@ namespace TravelAgency.Models.Model
 
         public int PeopleCount { get; set; }
 
-        public string TourType { get; set; }
+        public int TourTypeId { get; set; }
 
-        public HotelVM Hotel { get; set; }
+        public int HotelId { get; set; }
 
         public double Price { get; set; }
     }

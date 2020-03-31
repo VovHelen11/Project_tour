@@ -1,0 +1,20 @@
+﻿@model TravelAgency.Models.Model.FilterVM
+
+@using (Html.BeginForm("SearchTours", "Search", FormMethod.Post))
+{
+    <label>type tour</label>
+    @Html.DropDownListFor(m => m.DataFilterVm.TourTypeId, Model.TourTypeSelect)
+
+    <label>type hotel</label>
+    @Html.DropDownListFor(m => m.DataFilterVm.HotelTypeId, Model.HotelTypeSelect)
+
+    @Html.LabelFor(x => x.DataFilterVm.Price, "от " + Model.PriceMin + " до " + Model.PriceMax)
+    @Html.ValidationMessageFor(x => x.DataFilterVm.Price)
+    @Html.TextBoxFor(x => x.DataFilterVm.Price, new { placeholder = "цена до " })
+
+    @Html.LabelFor(x => x.DataFilterVm.PeopleCount, "от " + Model.PeopleCountMin + " до " + Model.PeopleCountMax)
+    @Html.ValidationMessageFor(x => x.DataFilterVm.PeopleCount)
+    @Html.TextBoxFor(x => x.DataFilterVm.PeopleCount, new { placeholder = " " })
+
+    <button type="submit">Отправить</button>
+}

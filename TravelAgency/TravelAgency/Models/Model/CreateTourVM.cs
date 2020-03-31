@@ -2,10 +2,9 @@
 
 namespace TravelAgency.Models.Model
 {
-    public class TourVM
+    public class CreateTourVM
     {
-        public int Id { get; set; }
-
+      
         public string Name { get; set; }
 
         public DateTime DepartureData { get; set; }
@@ -14,9 +13,9 @@ namespace TravelAgency.Models.Model
 
         public int PeopleCount { get; set; }
 
-        public string TourType { get; set; }
+        public int TourTypeId { get; set; }
 
-        public HotelVM Hotel { get; set; }
+        public int HotelId { get; set; }
 
         public double Price { get; set; }
     }

@@ -1,0 +1,32 @@
+﻿@model TravelAgency.Models.Model.DataSearchVM
+@{
+    ViewBag.Title = "SearchTour";
+}
+<div class="col-3">
+    <ul class="list-group">
+        @Html.Partial("Filter", Model.Filter)
+    </ul>
+</div>
+<div class="col-9 render-body">
+    @foreach (var item in Model.Tours.Tours)
+    {
+        <div class="card text-white bg-dark mb-3 ">
+            <p class="card-header">@item.Name</p>
+            <div class="card-body">
+                <p class="card-subtitle mb-2 text-muted">Туда: @item.DepartureData / Обратно: @item.ArrivalDate</p>
+                <div class="card-text">
+                    <p>Цена: @item.Price</p>
+                    <p>Гостиница: @item.Hotel.Name</p>
+                    <p>Количество людей: @item.PeopleCount</p>
+                    <p>Тип тура: @item.TourType</p>
+                </div>
+
+            </div>
+            <button name="button" id="more-details" type="submit">
+                @Html.ActionLink("Подробнее", "MoreDetailsATour","Home",new { id = item.Id },null)
+            </button>
+        </div>
+
+    }
+</div>
+

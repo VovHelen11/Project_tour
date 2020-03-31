@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TravelAgency.DataAccess.Models;
 
 namespace TravelAgency.Models
 {
@@ -6,6 +7,6 @@ namespace TravelAgency.Models
     {
         IEnumerable<TourTypeBL> GetTourTypes();
 
-        
+        TourType GetTourType(int id);
     }
 }

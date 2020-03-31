@@ -20,10 +20,12 @@ namespace TravelAgency.DataAccess.Repository
             _dbSet = context.Set<TEntity>();
 
         }
-        public void Add(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
-            _dbSet.Add(entity);
+            var created = _dbSet.Add(entity);
             _context.SaveChanges();
+
+            return created;
         }
 
         public void Update(TEntity entity)

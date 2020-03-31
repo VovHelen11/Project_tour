@@ -21,7 +21,12 @@ namespace TravelAgency.BusinessLogic.Service
           _mapper = mapper;
       }
 
-      public IEnumerable<HotelBL> GetHotels()
+        public Hotel GetHotel(int id)
+        {
+           return _repository.GetById(id);
+        }
+
+        public IEnumerable<HotelBL> GetHotels()
       {
           var hotels = _repository.GetAll();
           var mapHotels = _mapper.Map<IEnumerable<Hotel>, IEnumerable<HotelBL>>(hotels);

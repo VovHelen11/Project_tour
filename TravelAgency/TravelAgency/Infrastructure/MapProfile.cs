@@ -9,7 +9,44 @@ namespace TravelAgency.Infrastructure
     {
         public MapProfile()
         {
-            
+            CreateMap<DataFilterVM, DataFilterBL>()
+                .ForMember(dest => dest.TourTypeId, opt => opt.MapFrom(srt => srt.TourTypeId))
+                .ForMember(dest => dest.HotelTypeId, opt => opt.MapFrom(srt => srt.HotelTypeId))
+                .ForMember(dest => dest.PeopleCount, opt => opt.MapFrom(srt => srt.PeopleCount))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(srt => srt.Price));
+
+
+            CreateMap<DataSearchBL, FilterVM>()
+                .ForMember(dest => dest.HotelTypes, opt => opt.MapFrom(srt => srt.HotelTypes))
+                .ForMember(dest => dest.PriceMin, opt => opt.MapFrom(srt => srt.PriceMin))
+                .ForMember(dest => dest.PriceMax, opt => opt.MapFrom(srt => srt.PriceMax))
+                .ForMember(dest => dest.PeopleCountMin, opt => opt.MapFrom(srt => srt.PeopleCountMin))
+                .ForMember(dest => dest.PeopleCountMax, opt => opt.MapFrom(srt => srt.PeopleCountMax))
+                .ForMember(dest => dest.TourTypes, opt => opt.MapFrom(srt => srt.TourTypes));
+
+
+            CreateMap<HotelTypeBL, HotelTypeVM>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(srt => srt.Name))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(srt => srt.Id));
+
+
+            CreateMap<CreateTourVM, CreateTourBL>()
+                .ForMember(dest => dest.TourTypeId, opt => opt.MapFrom(src => src.TourTypeId))
+                .ForMember(dest => dest.HotelId, opt => opt.MapFrom(src => src.HotelId))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.ArrivalDate, opt => opt.MapFrom(src => src.ArrivalDate))
+                .ForMember(dest => dest.DepartureData, opt => opt.MapFrom(src => src.DepartureData))
+                .ForMember(dest => dest.PeopleCount, opt => opt.MapFrom(src => src.PeopleCount))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price));
+
+
+            CreateMap<TourTypeBL, TourTypeVM>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(srt => srt.Name))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(srt => srt.Id));
+
+            CreateMap<DataCreateTourBL, DataCreatTourVM>()
+                .ForMember(dest => dest.Hotels, opt => opt.MapFrom(str => str.Hotels))
+                .ForMember(dest => dest.TourTypes, opt => opt.MapFrom(srt => srt.TourTypes));
 
             CreateMap<HotelAddressBL, HotelAddressVM>()
                 .ForMember(dest => dest.City, opt => opt.MapFrom(srt => srt.City))
@@ -19,7 +56,8 @@ namespace TravelAgency.Infrastructure
             CreateMap<HotelBL, HotelVM>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.HotelAddress, opt => opt.MapFrom(src => src.HotelAddress))
-                .ForMember(dest => dest.HotelType, opt => opt.MapFrom(src => src.HotelType));
+                .ForMember(dest => dest.HotelType, opt => opt.MapFrom(src => src.HotelType))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
 
             CreateMap<TourVM, TourBL>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

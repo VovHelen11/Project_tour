@@ -12,11 +12,11 @@
 
         @Html.LabelFor(x => x.Tour.ArrivalDate)
         @Html.ValidationMessageFor(x => x.Tour.ArrivalDate)
-        @Html.TextBoxFor(x => x.Tour.ArrivalDate, new { placeholder = "Дата отп" })
+        @Html.TextBoxFor(x => x.Tour.ArrivalDate, new { placeholder = "Дата отп", type="date", name="calendar"})
 
         @Html.LabelFor(x => x.Tour.DepartureData)
         @Html.ValidationMessageFor(x => x.Tour.DepartureData)
-        @Html.TextBoxFor(x => x.Tour.DepartureData, new { placeholder = "Дата отп" })
+        @Html.TextBoxFor(x => x.Tour.DepartureData, new { placeholder = "Дата отп",type="date", name="calendar" })
 
         @Html.LabelFor(x => x.Tour.PeopleCount)
         @Html.ValidationMessageFor(x => x.Tour.PeopleCount)
@@ -27,11 +27,13 @@
         @Html.TextBoxFor(x => x.Tour.Price, new { placeholder = "Дата отп" })
 
 
-        @Html.DropDownListFor(m => m.TourTypes,new SelectList(Model.TourTypes))
+        @Html.DropDownListFor(m => m.Tour.TourTypeId, Model.TourTypeSelect)
 
-        @Html.DropDownListFor(m => m.Hotels, new SelectList(Model.Hotels.Select(x=>x.Name)))
+        @Html.DropDownListFor(m => m.Tour.HotelId, Model.HotelsSelect)
 
 
         <button type="submit">Отправить</button>
     </div>
+
+
 }

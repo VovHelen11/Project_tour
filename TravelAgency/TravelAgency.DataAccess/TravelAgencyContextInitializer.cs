@@ -29,7 +29,10 @@ namespace TravelAgency.DataAccess
             };
 
             hotelType = context.HotelTypes.Add(hotelType);
-            context.HotelTypes.Add(hotelType);
+            hotelType2 = context.HotelTypes.Add(hotelType2);
+
+            //context.HotelTypes.Add(hotelType);
+            //context.HotelTypes.Add(hotelType2);
 
             var hotel = new Hotel
             {
@@ -42,18 +45,25 @@ namespace TravelAgency.DataAccess
             {
                 Name = "Hotel 2",
                 HotelAddress = hotelAddress,
-                HotelType = hotelType
+                HotelType = hotelType2
             };
 
-            hotel = context.Hotels.Add(hotel); 
-            context.Hotels.Add(hotel2);
+            hotel = context.Hotels.Add(hotel);
+            hotel2 = context.Hotels.Add(hotel2);
 
             var tourType = new TourType
             {
                 Name = "Shoping"
             };
 
+            var tourType2 = new TourType
+            {
+                Name = "resort"
+            };
+
             tourType = context.TourTypes.Add(tourType);
+            tourType2 = context.TourTypes.Add(tourType2);
+
 
             var tour = new Tour
             {
@@ -61,9 +71,9 @@ namespace TravelAgency.DataAccess
                 ArrivalDate = new DateTime(2020, 7, 11),
                 DepartureData = new DateTime(2020, 7, 2),
                 PeopleCount = 2,
-                Price = 5000,
+                Price = 1000,
                 TourType = tourType,
-                Hotel = hotel
+                Hotel = hotel2
             };
             var tour2 = new Tour
             {
@@ -74,11 +84,34 @@ namespace TravelAgency.DataAccess
                 Price = 5000,
                 TourType = tourType,
                 Hotel = hotel,
-                Hot=true
-                
+                Hot = true
+
+            }; var tour3 = new Tour
+            {
+                Name = "1",
+                ArrivalDate = new DateTime(2020, 7, 11),
+                DepartureData = new DateTime(2020, 7, 2),
+                PeopleCount = 2,
+                Price = 5000,
+                TourType = tourType2,
+                Hotel = hotel
+            };
+            var tour4 = new Tour
+            {
+                Name = "1",
+                ArrivalDate = new DateTime(2020, 7, 11),
+                DepartureData = new DateTime(2020, 7, 2),
+                PeopleCount = 2,
+                Price = 2000,
+                TourType = tourType2,
+                Hotel = hotel2,
+                Hot = true
+
             };
             context.Tours.Add(tour);
             context.Tours.Add(tour2);
+            context.Tours.Add(tour3);
+            context.Tours.Add(tour4);
 
             context.SaveChanges();
 

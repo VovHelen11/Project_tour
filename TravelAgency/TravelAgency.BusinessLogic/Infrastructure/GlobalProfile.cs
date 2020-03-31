@@ -9,8 +9,24 @@ namespace TravelAgency.BusinessLogic.Infrastructure
     {
         public GlobalProfile()
         {
+
+          
+
+            CreateMap<HotelType, HotelTypeBL>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(srt => srt.Name))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(srt => srt.Id));
+
+
+            CreateMap<CreateTourBL, Tour>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.ArrivalDate, opt => opt.MapFrom(src => src.ArrivalDate))
+                .ForMember(dest => dest.DepartureData, opt => opt.MapFrom(src => src.DepartureData))
+                .ForMember(dest => dest.PeopleCount, opt => opt.MapFrom(src => src.PeopleCount))
+                .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price));
+
             CreateMap<TourType, TourTypeBL>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(srt => srt.Name));
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(srt => srt.Name))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(srt => srt.Id));
 
 
             CreateMap<HotelAddress, HotelAddressBL>()
@@ -19,6 +35,7 @@ namespace TravelAgency.BusinessLogic.Infrastructure
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(srt => srt.Country));
             
             CreateMap<Hotel, HotelBL>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.HotelAddress, opt => opt.MapFrom(src => src.HotelAddress))
                 .ForMember(dest => dest.HotelType, opt => opt.MapFrom(src => src.HotelType.Name));

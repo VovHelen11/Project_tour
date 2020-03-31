@@ -10,6 +10,7 @@ namespace TravelAgency.BusinessLogic.Interfaces
     {
          IEnumerable<HotelBL> GetHotels();
 
+         Hotel GetHotel(int id);
 
     }
 }

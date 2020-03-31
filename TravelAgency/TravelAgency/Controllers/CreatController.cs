@@ -14,58 +14,36 @@ namespace TravelAgency.Controllers
     public class CreatController : Controller
     {
         private readonly ITourService _tourService;
-        private readonly IHotelService _hotelService;
-        private readonly ITourTypeService _tourTypeService;
         private readonly Mapper _mapper;
-        public CreatController(ITourService tourService,ITourTypeService tourTypeService, IHotelService hotelService, Mapper mapper)
+        public CreatController(ITourService tourService, Mapper mapper)
         {
-            _tourTypeService = tourTypeService;
-            _hotelService = hotelService;
             _tourService = tourService;
             _mapper = mapper;
         }
         public ActionResult CreatTour()
         {
-            var maptourtypes = GetTourTypes();
-            var maphotel = GetHotels();
-            return View(new DataCreatTourVM
-            {
-               Hotels=maphotel,
-               TourTypes=maptourtypes
-               
-            });
+            var dataCreateTour = _tourService.GetDateCreateTour();
+            var mapData = _mapper.Map<DataCreateTourBL, DataCreatTourVM>(dataCreateTour);
+            return View(mapData);
+            
         }
 
         [HttpPost]
-        public ActionResult CreatTour(TourVM tourVM) {
+        public ActionResult CreatTour(DataCreatTourVM creatTourVm) {
+
             if (ModelState.IsValid)
             {
-                _tourService.AddTour(_mapper.Map<TourVM,TourBL>(tourVM));
+               var tour= _tourService.AddTour(_mapper.Map<CreateTourVM,CreateTourBL>(creatTourVm.Tour));
 
-                return View();
+                return RedirectToAction("MoreDetailsATour","Home", tour);
             }
-            var maptourtypes = GetTourTypes();
-            var maphotel = GetHotels();
-            return View(new DataCreatTourVM
-            {
-                Hotels = maphotel,
-                TourTypes = maptourtypes
 
-            });
+            var dataCreateTour = _tourService.GetDateCreateTour();
+            var mapData = _mapper.Map<DataCreateTourBL, DataCreatTourVM>(dataCreateTour);
+            return View(mapData);
 
         }
 
-        public IEnumerable<string> GetTourTypes()
-        {
-            var tourtypes = _tourTypeService.GetTourTypes();
-            return tourtypes.Select(x => x.Name);
-
-        }
-        public IEnumerable<HotelVM> GetHotels()
-        {
-            var hotels = _hotelService.GetHotels();
-             return _mapper.Map<IEnumerable<HotelBL>, IEnumerable<HotelVM>>(hotels);
-
-        }
+        
     }
 }

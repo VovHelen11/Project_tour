@@ -22,11 +22,10 @@ namespace TravelAgency.BusinessLogic.Infrastructure
 
             builder.RegisterType<TravelAgencyContext>().AsSelf().WithParameter("connectionStringName", "TravelAgency");
 
-            builder.RegisterType<HotelService>().As<IHotelService>();
 
-            builder.RegisterType<TourServise>().As<ITourService>();
+            builder.RegisterType<TourService>().As<ITourService>();
 
-            builder.RegisterType<TourTypeServise>().As<ITourTypeService>();
+  
         }
     }
 }

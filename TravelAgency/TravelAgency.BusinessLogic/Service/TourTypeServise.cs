@@ -20,15 +20,18 @@ namespace TravelAgency.BusinessLogic.Service
             _mapper = mapper;
         }
 
-        
+        //public TourType GetTourType(int id)
+        //{
+        //   return _repository.GetById(id);
+        //}
 
-        public IEnumerable<TourTypeBL> GetTourTypes()
-        {
-            var tourType = _repository.GetAll();
-            var mapTours = _mapper.Map<IEnumerable<TourType>, IEnumerable<TourTypeBL>>(tourType);
+        //public IEnumerable<TourTypeBL> GetTourTypes()
+        //{
+        //    var tourType = _repository.GetAll();
+        //    var mapTours = _mapper.Map<IEnumerable<TourType>, IEnumerable<TourTypeBL>>(tourType);
 
-            return mapTours;
-        }
+        //    return mapTours;
+        //}
     
     }
 }

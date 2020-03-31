@@ -12,7 +12,12 @@ namespace TravelAgency.BusinessLogic.Interfaces
 
         IEnumerable<TourBL> GetHotTours();
 
-        void AddTour(TourBL tourBL);
+        TourBL AddTour(CreateTourBL tourBL);
 
+        DataCreateTourBL GetDateCreateTour();
+
+        DataSearchBL GetDataSearch();
+
+        IEnumerable<TourBL> GetSearchTour(DataFilterBL searchBl);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TravelAgency.DataAccess.Models
 {
@@ -19,5 +20,11 @@ namespace TravelAgency.DataAccess.Models
         public double Price { get; set; }
 
         public bool Hot { get; set; }
+
+        [ForeignKey(nameof(Hotel))]
+        public int HotelId { get; set; }
+
+        [ForeignKey(nameof(TourType))]
+        public int  TourTypeId { get; set; }
     }
 }
