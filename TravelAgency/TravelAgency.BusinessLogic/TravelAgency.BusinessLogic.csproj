@@ -61,6 +61,7 @@
     <Compile Include="Infrastructure\GlobalProfile.cs" />
     <Compile Include="Interfaces\ITourService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Models\TourState.cs" />
     <Compile Include="Models\UserBL.cs" />
     <Compile Include="Models\CreateTourBL.cs" />
     <Compile Include="Models\DataCreateTourBL.cs" />

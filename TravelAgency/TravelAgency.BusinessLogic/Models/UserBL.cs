@@ -16,5 +16,9 @@ namespace TravelAgency.BusinessLogic.Models
         public string Login { get; set; }
 
         public bool Block { get; set; }
+
+        public string MobilePhone { get; set; }
+
+        public virtual ICollection<TourBL> Tours { get; set; }
     }
 }

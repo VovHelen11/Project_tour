@@ -9,37 +9,40 @@ namespace TravelAgency.BusinessLogic.Service
 {
     public class UserService : IUserService
     {
-        private readonly IRepository<User> _repository;
+        private readonly IRepository<User> _userRepository;
         
         private readonly Mapper _mapper;
 
-        public UserService(Mapper mapper, IRepository<User> repository)
+        public UserService(Mapper mapper, IRepository<User> userRepository)
         {
             _mapper = mapper;
-            _repository = repository;
+            _userRepository = userRepository;
         }
 
         public void AddUser(UserBL userBl)
         {
-            _repository.Add(_mapper.Map<UserBL, User>(userBl));
+            _userRepository.Add(_mapper.Map<UserBL, User>(userBl));
         }
 
         public void Block(int id)
         {
-           var user= _repository.GetById(id);
+           var user= _userRepository.GetById(id);
 
            user.Block = true;
-           _repository.Update(user);
+           _userRepository.Update(user);
         }
 
         public UserBL GetUser(int id)
         {
-            throw new System.NotImplementedException();
+            var user = _userRepository.GetById(id);
+            var mapUser = _mapper.Map<User, UserBL>(user);
+
+            return mapUser;
         }
 
         public IEnumerable<UserBL> GetUsers()
         {
-            var users=_repository.GetAll();
+            var users=_userRepository.GetAll();
             var mapUsers = _mapper.Map<IEnumerable<User>, IEnumerable<UserBL>>(users);
 
             return mapUsers;
@@ -48,10 +51,10 @@ namespace TravelAgency.BusinessLogic.Service
         public void Unblock(int id)
         {
 
-            var user = _repository.GetById(id);
+            var user = _userRepository.GetById(id);
 
             user.Block = false;
-            _repository.Update(user);
+            _userRepository.Update(user);
         }
 
        

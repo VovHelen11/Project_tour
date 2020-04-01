@@ -1,17 +1,23 @@
-﻿@{
+﻿@using TravelAgency.DataAccess.Models
+@{
     Layout = "./_Layout.cshtml";
 }
 <div class="col-9">
     <div class=" row ">
         <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Главная", "Index", "Home")</a></li>
         <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Поиск тура", "SearchTours", "Search")</a></li>
-        <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Создание тура", "CreateTour", "Create")</a></li>
+        @if (User.IsInRole(nameof(UserType.Manager)) || User.IsInRole(nameof(UserType.Admin)))
+        {
+            <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Создание тура", "CreateTour", "Create")</a></li>
+        }
+        @if (User.IsInRole(nameof(UserType.Admin)))
+        {
         <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Удаление тура", "DeleteTour", "Administrator")</a></li>
         <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Блокировка/Разблокировка пользователя", "AllUser", "Administrator")</a></li>
         <li class=" col-2 text-center card border-dark mb-3"><a>@Html.ActionLink("Изменение тура", "ModificationTour", "Administrator")</a></li>
-
+        }
     </div>
-    <div class="row justify-content-center">@RenderBody()</div>
+    @RenderBody()
 </div>
 
 

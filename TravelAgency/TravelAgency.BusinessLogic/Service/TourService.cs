@@ -7,6 +7,7 @@ using TravelAgency.DataAccess.Interfaces;
 using TravelAgency.DataAccess.Models;
 using System.Linq;
 using TravelAgency.Models;
+using TourState = TravelAgency.DataAccess.Models.TourState;
 
 namespace TravelAgency.BusinessLogic.Service
 {

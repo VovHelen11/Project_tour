@@ -16,7 +16,9 @@ namespace TravelAgency.Infrastructure
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(srt => srt.FirstName))
                 .ForMember(dest => dest.Login, opt => opt.MapFrom(srt => srt.Login))
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(srt => srt.Id))
-                .ForMember(dest => dest.Block, opt => opt.MapFrom(srt => srt.Block));
+                .ForMember(dest => dest.Block, opt => opt.MapFrom(srt => srt.Block))
+                .ForMember(dest => dest.MobilePhone, opt => opt.MapFrom(srt => srt.MobilePhone));
+
 
             CreateMap<DataFilterVM, DataFilterBL>()
                 .ForMember(dest => dest.TourTypeId, opt => opt.MapFrom(srt => srt.TourTypeId))
@@ -79,7 +81,9 @@ namespace TravelAgency.Infrastructure
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                 .ForMember(dest => dest.TourType, opt => opt.MapFrom(src => src.TourType))
                 .ForMember(dest => dest.Hot, opt => opt.MapFrom(src => src.Hot))
-                .ForMember(dest => dest.Hotel, opt => opt.MapFrom(src => src.Hotel));
+                .ForMember(dest => dest.Hotel, opt => opt.MapFrom(src => src.Hotel))
+                .ForMember(dest => dest.TourState, opt => opt.MapFrom(src => src.TourState));
+
             CreateMap<HotelAddressVM, HotelAddressBL>()
                 .ForMember(dest => dest.City, opt => opt.MapFrom(srt => srt.City))
                 .ForMember(dest => dest.Street, opt => opt.MapFrom(srt => srt.Street))
@@ -99,7 +103,9 @@ namespace TravelAgency.Infrastructure
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
                 .ForMember(dest => dest.TourType, opt => opt.MapFrom(src => src.TourType))
                 .ForMember(dest => dest.Hot, opt => opt.MapFrom(src => src.Hot))
-                .ForMember(dest => dest.Hotel, opt => opt.MapFrom(src => src.Hotel));
+                .ForMember(dest => dest.Hotel, opt => opt.MapFrom(src => src.Hotel))
+                .ForMember(dest => dest.TourState, opt => opt.MapFrom(src => src.TourState));
+
         }
     }
 }

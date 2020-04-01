@@ -51,7 +51,7 @@ namespace TravelAgency.Controllers
         public ActionResult Book(int idTour)
         {
             _tourService.BookTour(idTour, ((UserIdentity)User.Identity).Id.Value);
-            return 
+            return RedirectToAction("Profile","User");
 
         }
     }

@@ -171,6 +171,7 @@
     <Compile Include="Models\Model\HotelTypeVM.cs" />
     <Compile Include="Models\Model\HotelVM.cs" />
     <Compile Include="Models\Model\ModificationTourVM.cs" />
+    <Compile Include="Models\Model\TourState.cs" />
     <Compile Include="Models\Model\TourTypeVM.cs" />
     <Compile Include="Models\Model\TourVM.cs" />
     <Compile Include="Models\ToursVM.cs" />

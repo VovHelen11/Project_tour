@@ -20,7 +20,7 @@ namespace TravelAgency.BusinessLogic.Infrastructure
         {
             builder.RegisterGeneric(typeof(TEntityRepository<>)).As(typeof(IRepository<>));
 
-            builder.RegisterType<TravelAgencyContext>().AsSelf().WithParameter("connectionStringName", "TravelAgency");
+            builder.RegisterType<TravelAgencyContext>().AsSelf().WithParameter("connectionStringName", "TravelAgency").InstancePerRequest();
 
 
             builder.RegisterType<TourService>().As<ITourService>();

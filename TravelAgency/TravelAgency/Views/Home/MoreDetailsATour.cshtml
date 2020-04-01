@@ -8,7 +8,7 @@
     <div class="card text-white bg-dark mb-3 ">
         <p class="card-header">@Model.Name</p>
         <div class="card-body">
-            <p class="card-subtitle mb-2 text-muted">Туда: @Model.DepartureData / Обратно:  @Model.ArrivalDate</p>
+            <p class="card-subtitle mb-2 text-muted">Туда: @Model.DepartureData.ToShortDateString() / Обратно:  @Model.ArrivalDate.ToShortDateString()</p>
             <div class="card-text">
                 <p>Цена: @Model.Price</p>
                 <p>Гостиница: @Model.Hotel.Name</p>
@@ -26,7 +26,7 @@
 
         </div>
         <button name="button" id="more-details" type="submit">
-            @Html.ActionLink("Забронировать", "Book", new { id = Model.Id })
+            @Html.ActionLink("Забронировать", "Book", new { idTour = Model.Id })
         </button>
 
     </div>

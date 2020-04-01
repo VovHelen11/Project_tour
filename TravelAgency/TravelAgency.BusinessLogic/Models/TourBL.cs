@@ -22,7 +22,8 @@ namespace TravelAgency.BusinessLogic.Models
 
         public bool Hot { get; set; }
 
-        
+
+        public TourState TourState { get; set; } = TourState.Active;
 
     }
 }

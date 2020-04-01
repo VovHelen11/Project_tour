@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using TravelAgency.Authentication;
 using TravelAgency.Authentication.Interfaces;
+using TravelAgency.BusinessLogic.Interfaces;
+using TravelAgency.BusinessLogic.Models;
+using TravelAgency.DataAccess.Interfaces;
 using TravelAgency.Models.UserModel;
 
 namespace TravelAgency.Controllers
@@ -11,10 +16,15 @@ namespace TravelAgency.Controllers
     public class UserController : Controller
     {
         private readonly IAuthentication _authentication;
+        private readonly IUserService _userService;
+        private readonly Mapper _mapper;
 
-        public UserController(IAuthentication authentication)
+
+        public UserController(IAuthentication authentication, IUserService userService, Mapper mapper)
         {
             _authentication = authentication;
+            _userService = userService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -43,12 +53,14 @@ namespace TravelAgency.Controllers
                 ModelState.AddModelError(nameof(loginData.Login), "there is no such combination");
                 return View();
             }
-            return View();
+            return RedirectToAction("Profile","User");
         }
 
         public ActionResult Profile()
         {
-            return View();
+            var userId = ((UserIdentity) User.Identity).Id.Value;
+            var user =_mapper.Map<UserBL,UserVM> (_userService.GetUser(userId));
+            return View(user);
         }
 
         public ActionResult Logout()

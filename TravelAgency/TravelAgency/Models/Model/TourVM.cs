@@ -21,5 +21,8 @@ namespace TravelAgency.Models.Model
         public double Price { get; set; }
 
         public bool Hot { get; set; }
+
+
+        public TourState TourState { get; set; } = TourState.Active;
     }
 }

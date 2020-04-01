@@ -8,7 +8,7 @@
         <div class="card text-white bg-dark mb-3 ">
             <p class="card-header">@Model.TourVm.Name</p>
             <div class="card-body">
-                <p class="card-subtitle mb-2 text-muted">Туда: @Model.TourVm.DepartureData / Обратно:  @Model.TourVm.ArrivalDate</p>
+                <p class="card-subtitle mb-2 text-muted">Туда: @Model.TourVm.DepartureData.ToShortDateString() / Обратно:  @Model.TourVm.ArrivalDate.ToShortDateString()</p>
                 <div class="card-text">
                     <p>Цена: @Model.TourVm.Price</p>
                     <p>Гостиница: @Model.TourVm.Hotel.Name</p>
