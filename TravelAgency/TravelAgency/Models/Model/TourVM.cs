@@ -1,4 +1,5 @@
 ﻿using System;
+using TravelAgency.Models.UserModel;
 
 namespace TravelAgency.Models.Model
 {
@@ -22,7 +23,11 @@ namespace TravelAgency.Models.Model
 
         public bool Hot { get; set; }
 
+        public UserVM BookedBy { get; set; }
 
         public TourState TourState { get; set; } = TourState.Active;
+
+        public int Discount { get; set; }
+
     }
 }

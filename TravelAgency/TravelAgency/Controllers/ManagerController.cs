@@ -6,19 +6,23 @@ using System.Web;
 using System.Web.Mvc;
 using TravelAgency.BusinessLogic.Interfaces;
 using TravelAgency.BusinessLogic.Models;
+using TravelAgency.DataAccess.Models;
 using TravelAgency.Models;
 using TravelAgency.Models.Model;
 
 namespace TravelAgency.Controllers
 {
-    public class CreateController : Controller
+    [Authorize(Roles ="Admin,Manager")]
+    public class ManagerController : Controller
     {
         private readonly ITourService _tourService;
+        private readonly ISettingsService _settingsService;
         private readonly Mapper _mapper;
-        public CreateController(ITourService tourService, Mapper mapper)
+        public ManagerController(ITourService tourService, Mapper mapper, ISettingsService settingsService)
         {
             _tourService = tourService;
             _mapper = mapper;
+            _settingsService = settingsService;
         }
         public ActionResult CreateTour()
         {
@@ -44,6 +48,37 @@ namespace TravelAgency.Controllers
 
         }
 
-        
+        [HttpGet]
+        public ActionResult Paid(int id)
+        {
+            _tourService.Paid(id);
+
+            return RedirectToAction("Booking");
+        }
+        [HttpGet]
+        public ActionResult Canceled(int id)
+        {
+            _tourService.Canceled(id);
+            return RedirectToAction("Booking");
+        }
+
+        public ActionResult Booking()
+        {
+          var tours= _mapper.Map<IEnumerable<TourBL>,IEnumerable<TourVM>>( _tourService.GetAllRegistered());
+
+            return View(new ToursVM(){
+                 Tours = tours});
+        }
+        [HttpGet]
+        public ActionResult GlobalSettings()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GlobalSettings(SettingsVM settingsVm)
+        {
+            _settingsService.Update(_mapper.Map<SettingsVM,SettingsBL>(settingsVm));
+            return RedirectToAction("Index","Home");
+        }
     }
 }

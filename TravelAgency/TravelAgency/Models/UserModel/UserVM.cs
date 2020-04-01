@@ -20,6 +20,7 @@ namespace TravelAgency.Models.UserModel
 
         public int Id { get; set; }
 
+        public int Discount { get; set; }
 
         public string MobilePhone { get; set; }
 

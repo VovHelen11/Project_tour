@@ -57,6 +57,7 @@
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\HotelAddress.cs" />
     <Compile Include="Models\HotelType.cs" />
+    <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\TourState.cs" />
     <Compile Include="Models\TourType.cs" />
     <Compile Include="Models\User.cs" />

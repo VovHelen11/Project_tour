@@ -64,7 +64,7 @@ namespace TravelAgency.Authentication
                 return null;
             }
 
-            if (user == null || password != user.Password)
+            if (user == null || password != user.Password ||user.Block)
                 return null;
 
             //Set up cookie ***************

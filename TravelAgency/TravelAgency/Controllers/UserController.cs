@@ -13,6 +13,7 @@ using TravelAgency.Models.UserModel;
 
 namespace TravelAgency.Controllers
 {
+
     public class UserController : Controller
     {
         private readonly IAuthentication _authentication;
@@ -41,32 +42,49 @@ namespace TravelAgency.Controllers
         [HttpPost]
         public ActionResult Registration(RegistrationData registrationData)
         {
+            if (ModelState.IsValid)
+            {
+                var user = _mapper.Map<RegistrationData, UserBL>(registrationData);
+
+                try
+                {
+                    _userService.CreateUser(user);
+                }
+                catch (ArgumentException e)
+                {
+                    ModelState.AddModelError(nameof(registrationData.Login), e.Message);
+                }
+                return RedirectToAction("Login", "User");
+            }
+
 
             return View();
+
         }
         [HttpPost]
         public ActionResult Login(LoginData loginData)
         {
             var result = _authentication.Login(loginData.Login, loginData.Password, true);
-            if (result==null)
-            { 
+            if (result == null)
+            {
                 ModelState.AddModelError(nameof(loginData.Login), "there is no such combination");
                 return View();
             }
-            return RedirectToAction("Profile","User");
+            return RedirectToAction("Profile", "User");
         }
 
+        [Authorize]
         public ActionResult Profile()
         {
-            var userId = ((UserIdentity) User.Identity).Id.Value;
-            var user =_mapper.Map<UserBL,UserVM> (_userService.GetUser(userId));
+            var userId = ((UserIdentity)User.Identity).Id.Value;
+            var user = _mapper.Map<UserBL, UserVM>(_userService.GetUser(userId));
             return View(user);
         }
-
+        [Authorize]
         public ActionResult Logout()
         {
-           _authentication.Logout();
-           return RedirectToAction("Index", "Home");
+            _authentication.Logout();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

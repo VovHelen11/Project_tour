@@ -12,17 +12,21 @@
     @Html.ValidationMessageFor(x => x.Lastname)
     @Html.TextBoxFor(x => x.Lastname)
 
+    @Html.LabelFor(x => x.MobilePhone)
+    @Html.ValidationMessageFor(x => x.MobilePhone)
+    @Html.TextBoxFor(x => x.MobilePhone)
+
     @Html.LabelFor(x => x.Login)
     @Html.ValidationMessageFor(x => x.Login)
     @Html.TextBoxFor(x => x.Login)
-
-    @Html.LabelFor(x => x.RepeatPassword)
-    @Html.ValidationMessageFor(x => x.RepeatPassword)
-    @Html.TextBoxFor(x => x.RepeatPassword)
 
     @Html.LabelFor(x => x.Password)
     @Html.ValidationMessageFor(x => x.Password)
     @Html.TextBoxFor(x => x.Password)
 
-    <button type="submit">Отправить</button>
+    @Html.LabelFor(x => x.RepeatPassword)
+    @Html.ValidationMessageFor(x => x.RepeatPassword)
+    @Html.TextBoxFor(x => x.RepeatPassword)
+    
+    <button type="submit">Зарегистрироваться</button>
 }

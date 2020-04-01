@@ -11,15 +11,35 @@ namespace TravelAgency.DataAccess
         {
             var user = new User()
             {
-                FirstName = "lena",
-                LastName = "kha",
-                Login = "lenakha",
+                FirstName = "admin",
+                LastName = "admin",
+                Login = "admin",
                 Password = "123",
-                MobilePhone = "+3805050505",
+                MobilePhone = "+380958972428",
                 UserType = UserType.Admin
+            };
+            var user1 = new User()
+            {
+                FirstName = "manager",
+                LastName = "manager",
+                Login = "manager",
+                Password = "123",
+                MobilePhone = "+380958972428",
+                UserType = UserType.Manager
+            };
+            var user2 = new User()
+            {
+                FirstName = "Client",
+                LastName = "Client",
+                Login = "Client",
+                Password = "123",
+                MobilePhone = "+380958972428",
+                UserType = UserType.Client
             };
 
             context.Users.Add(user);
+            context.Users.Add(user1);
+            context.Users.Add(user2);
 
             var hotelAddress = new HotelAddress
             {
@@ -122,6 +142,12 @@ namespace TravelAgency.DataAccess
             context.Tours.Add(tour3);
             context.Tours.Add(tour4);
 
+            var max = new Settings()
+            {
+                MaxUserDiscount = 50
+            };
+
+            context.Settings.Add(max);
             context.SaveChanges();
 
 

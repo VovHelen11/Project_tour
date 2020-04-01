@@ -14,7 +14,8 @@ namespace TravelAgency.BusinessLogic.Interfaces
         void Block(int id);
 
         void Unblock(int id);
-        
 
+
+        void CreateUser(UserBL user);
     }
 }

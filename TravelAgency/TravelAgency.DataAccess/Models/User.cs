@@ -21,5 +21,8 @@ namespace TravelAgency.DataAccess.Models
 
         public bool Block { get; set; }
 
+        public int Discount { get; set; }
+
+
     }
 }

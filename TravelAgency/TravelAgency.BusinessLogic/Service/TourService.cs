@@ -18,10 +18,11 @@ namespace TravelAgency.BusinessLogic.Service
         private readonly IRepository<HotelType> _hotelTypeRepository;
         private readonly IRepository<TourType> _tourTypeRepository;
         private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Settings> _settingsRepository;
 
         private readonly Mapper _mapper;
 
-        public TourService(IRepository<Tour> tourRepository, Mapper mapper, IRepository<Hotel> hotelRepository, IRepository<TourType> tourTypeRepository, IRepository<HotelType> hotelTypeRepository, IRepository<User> userRepository)
+        public TourService(IRepository<Tour> tourRepository, Mapper mapper, IRepository<Hotel> hotelRepository, IRepository<TourType> tourTypeRepository, IRepository<HotelType> hotelTypeRepository, IRepository<User> userRepository, IRepository<Settings> settingsRepository)
         {
             _tourRepository = tourRepository;
             _mapper = mapper;
@@ -29,6 +30,7 @@ namespace TravelAgency.BusinessLogic.Service
             _tourTypeRepository = tourTypeRepository;
             _hotelTypeRepository = hotelTypeRepository;
             _userRepository = userRepository;
+            _settingsRepository = settingsRepository;
         }
 
         public IEnumerable<TourBL> GetTours()
@@ -148,6 +150,40 @@ namespace TravelAgency.BusinessLogic.Service
             tour.BookedBy = user;
             tour.TourState = TourState.Registered;
             _tourRepository.Update(tour);
+        }
+
+        public void Paid(int id)
+        {
+            var tour = _tourRepository.GetById(id);
+            var maxUserDiscount = _settingsRepository.GetById(1).MaxUserDiscount;
+            tour.TourState = TourState.Paid;
+            if (maxUserDiscount<tour.Discount+tour.BookedBy.Discount)
+            {
+                tour.BookedBy.Discount = maxUserDiscount;
+            }
+            else
+            {
+                tour.BookedBy.Discount += tour.Discount;
+            }
+            _userRepository.Update(tour.BookedBy);
+            _tourRepository.Update(tour);
+
+        }
+
+        public void Canceled(int id)
+        {
+            var tour = _tourRepository.GetById(id);
+            tour.TourState = TourState.Canceled;
+            _tourRepository.Update(tour);
+        }
+
+        public IEnumerable<TourBL> GetAllRegistered()
+        {
+
+            var tours = _tourRepository.GetMany(o => o.TourState!=TourState.Active);
+            var mapTours = _mapper.Map<IEnumerable<Tour>, IEnumerable<TourBL>>(tours);
+            return mapTours;
+
         }
     }
 }

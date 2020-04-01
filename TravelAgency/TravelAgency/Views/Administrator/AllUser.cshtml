@@ -2,9 +2,7 @@
 @{
     ViewBag.Title = "AllUser";
 }
-@using (Html.BeginForm("DeleteTour", "Administrator", FormMethod.Post))
-{
-    foreach (var item in Model.Users)
+  @foreach (var item in Model.Users)
     {
         <div class="card text-white bg-dark mb-3 ">
             <div class="card-body">
@@ -25,5 +23,5 @@
             </div>
         </div>
     }
-}
+
 

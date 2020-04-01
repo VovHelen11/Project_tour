@@ -22,8 +22,12 @@ namespace TravelAgency.BusinessLogic.Models
 
         public bool Hot { get; set; }
 
+        public UserBL BookedBy { get; set; }
 
         public TourState TourState { get; set; } = TourState.Active;
+
+
+        public int Discount { get; set; }
 
     }
 }

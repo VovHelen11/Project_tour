@@ -12,12 +12,12 @@
             <div class="card-text">
                 <p>Цена: @Model.Price</p>
                 <p>Гостиница: @Model.Hotel.Name</p>
-                <p>Тип гостиницы: @Model.Hotel.HotelType</p> 
+                <p>Тип гостиницы: @Model.Hotel.HotelType</p>
                 <p>Адрес гостиницы:</p>
                 <p>Город: @Model.Hotel.HotelAddress.City</p>
                 <p>Страна: @Model.Hotel.HotelAddress.Country</p>
                 <p>Улица: @Model.Hotel.HotelAddress.Street</p>
-                                
+
                 <p>Количество людей: @Model.PeopleCount</p>
                 <p>Тип тура: @Model.TourType</p>
                 <p>Горячий: @Model.Hot</p>
@@ -25,8 +25,10 @@
             </div>
 
         </div>
-        <button name="button" id="more-details" type="submit">
-            @Html.ActionLink("Забронировать", "Book", new { idTour = Model.Id })
-        </button>
-
-    </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <button name="button" id="more-details" type="submit">
+                @Html.ActionLink("Забронировать", "Book", new {idTour = Model.Id})
+            </button>
+        }
+        </div>

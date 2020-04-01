@@ -25,6 +25,7 @@ namespace TravelAgency.BusinessLogic.Infrastructure
 
             builder.RegisterType<TourService>().As<ITourService>();
             builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<SettingsService>().As<ISettingsService>();
 
 
         }

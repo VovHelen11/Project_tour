@@ -21,5 +21,8 @@ namespace TravelAgency.BusinessLogic.Models
         public double Price { get; set; }
 
         public bool Hot { get; set; }
+
+        public int Discount { get; set; }
+
     }
 }

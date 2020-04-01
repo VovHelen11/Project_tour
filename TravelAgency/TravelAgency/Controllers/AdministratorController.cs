@@ -24,9 +24,7 @@ namespace TravelAgency.Controllers
             _mapper = mapper;
             _userService = userService;
         }
-
-      
-
+        
         public ActionResult DeleteTour()
         {
             var countTour = _tourService.GetTours().Count();

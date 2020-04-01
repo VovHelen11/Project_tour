@@ -50,7 +50,15 @@ namespace TravelAgency.Controllers
         [Authorize]
         public ActionResult Book(int idTour)
         {
-            _tourService.BookTour(idTour, ((UserIdentity)User.Identity).Id.Value);
+            try
+            {
+                _tourService.BookTour(idTour, ((UserIdentity)User.Identity).Id.Value);
+            }
+            catch (ArgumentException e)
+            {
+                return HttpNotFound();
+            }
+            
             return RedirectToAction("Profile","User");
 
         }

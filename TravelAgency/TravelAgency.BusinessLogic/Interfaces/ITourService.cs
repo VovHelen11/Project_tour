@@ -24,5 +24,8 @@ namespace TravelAgency.BusinessLogic.Interfaces
 
         void Update(CreateTourBL tour);
         void BookTour(int tourId, int userId);
+        void Paid(int id);
+        void Canceled(int id);
+      IEnumerable<TourBL> GetAllRegistered();
     }
 }

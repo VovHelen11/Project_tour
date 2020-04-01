@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using TravelAgency.BusinessLogic.Interfaces;
 using TravelAgency.BusinessLogic.Models;
@@ -30,6 +32,25 @@ namespace TravelAgency.BusinessLogic.Service
 
            user.Block = true;
            _userRepository.Update(user);
+        }
+
+        public void CreateUser(UserBL user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentException("User registration unavailable");
+            }
+            var userSearch = _userRepository.GetAll().FirstOrDefault(x=>x.Login==user.Login);
+            
+            if (userSearch != null)
+            {
+                throw new ArgumentException("Login unavailable");
+            }
+
+            var userMap = _mapper.Map<UserBL, User>(user);
+            userMap.UserType = UserType.Client;
+            _userRepository.Add(userMap);
+
         }
 
         public UserBL GetUser(int id)

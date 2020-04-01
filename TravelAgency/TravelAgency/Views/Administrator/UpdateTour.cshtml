@@ -31,27 +31,31 @@
         <div class="card form text-white bg-dark mb-3 ">
             @Html.LabelFor(x => x.DataCreated.Tour.Name)
             @Html.ValidationMessageFor(x => x.DataCreated.Tour.Name)
-            @Html.TextBoxFor(x => x.DataCreated.Tour.Name, new {placeholder = "Имя"})
+            @Html.TextBoxFor(x => x.DataCreated.Tour.Name)
 
             @Html.LabelFor(x => x.DataCreated.Tour.ArrivalDate)
             @Html.ValidationMessageFor(x => x.DataCreated.Tour.ArrivalDate)
-            @Html.TextBoxFor(x => x.DataCreated.Tour.ArrivalDate, new {placeholder = "Дата отп", type = "date", name = "calendar"})
+            @Html.TextBoxFor(x => x.DataCreated.Tour.ArrivalDate, new { type = "date", name = "calendar" })
 
             @Html.LabelFor(x => x.DataCreated.Tour.DepartureData)
             @Html.ValidationMessageFor(x => x.DataCreated.Tour.DepartureData)
-            @Html.TextBoxFor(x => x.DataCreated.Tour.DepartureData, new {placeholder = "Дата отп", type = "date", name = "calendar"})
+            @Html.TextBoxFor(x => x.DataCreated.Tour.DepartureData, new { type = "date", name = "calendar" })
 
             @Html.LabelFor(x => x.DataCreated.Tour.PeopleCount)
             @Html.ValidationMessageFor(x => x.DataCreated.Tour.PeopleCount)
-            @Html.TextBoxFor(x => x.DataCreated.Tour.PeopleCount, new {placeholder = "Дата отп"})
+            @Html.TextBoxFor(x => x.DataCreated.Tour.PeopleCount)
 
             @Html.LabelFor(x => x.DataCreated.Tour.Price)
             @Html.ValidationMessageFor(x => x.DataCreated.Tour.Price)
-            @Html.TextBoxFor(x => x.DataCreated.Tour.Price, new {placeholder = "Дата отп"})
+            @Html.TextBoxFor(x => x.DataCreated.Tour.Price)
+
+            @Html.LabelFor(x => x.DataCreated.Tour.Discount)
+            @Html.ValidationMessageFor(x => x.DataCreated.Tour.Discount)
+            @Html.TextBoxFor(x => x.DataCreated.Tour.Discount)
 
             <div class="form-check">
-                <input class="form-check-input" id="DataCreated.Tour.Hot" name="DataCreated.Tour.Hot" value="true" type="checkbox" checked/>
-                <label class="form-check-label" for="DataCreated.Tour.Hot">Hot</label><br/>
+                <input class="form-check-input" id="DataCreated.Tour.Hot" name="DataCreated.Tour.Hot" value="true" type="checkbox" checked />
+                <label class="form-check-label" for="DataCreated.Tour.Hot">Hot</label><br />
             </div>
 
             @Html.DropDownListFor(m => m.DataCreated.Tour.TourTypeId, Model.DataCreated.TourTypeSelect)

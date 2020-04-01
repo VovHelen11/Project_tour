@@ -30,9 +30,7 @@ namespace TravelAgency.Authentication
             var roles = role.Split(",".ToArray(), StringSplitOptions.RemoveEmptyEntries);
 
             var enums = Enum.GetValues(typeof(UserType)).Cast<UserType>().ToList();
-            // return roles.Any(r =>
-            //     string.Compare(r, nameof(UserIdentity.User.UserType), StringComparison.OrdinalIgnoreCase) == 0);
-            //return roles.Any(r => enums.Any(e => e.ToString() == r));
+          
             return roles.Contains(UserIdentity.User.UserType.ToString());
         }
     }

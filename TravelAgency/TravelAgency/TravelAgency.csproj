@@ -151,7 +151,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
-    <Compile Include="Controllers\CreateController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -171,6 +171,7 @@
     <Compile Include="Models\Model\HotelTypeVM.cs" />
     <Compile Include="Models\Model\HotelVM.cs" />
     <Compile Include="Models\Model\ModificationTourVM.cs" />
+    <Compile Include="Models\Model\SettingsVM.cs" />
     <Compile Include="Models\Model\TourState.cs" />
     <Compile Include="Models\Model\TourTypeVM.cs" />
     <Compile Include="Models\Model\TourVM.cs" />
@@ -200,7 +201,7 @@
     <Content Include="Views\Shared\_LayoutMenuUser.cshtml" />
     <Content Include="Views\Home\MoreDetailsATour.cshtml" />
     <Content Include="Views\Search\SearchTours.cshtml" />
-    <Content Include="Views\Create\CreateTour.cshtml" />
+    <Content Include="Views\Manager\CreateTour.cshtml" />
     <Content Include="Views\Search\Filter.cshtml" />
     <Content Include="Views\Administrator\DeleteTour.cshtml" />
     <Content Include="Views\Administrator\ModificationTour.cshtml" />
@@ -209,6 +210,8 @@
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\Administrator\AllUser.cshtml" />
+    <Content Include="Views\Manager\Booking.cshtml" />
+    <Content Include="Views\Manager\GlobalSettings.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

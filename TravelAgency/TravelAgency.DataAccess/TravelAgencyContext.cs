@@ -24,5 +24,7 @@ namespace TravelAgency.DataAccess
 
         public DbSet<TourType> TourTypes { get; set; }
 
+        public DbSet<Settings> Settings { get; set; }
+
     }
 }
